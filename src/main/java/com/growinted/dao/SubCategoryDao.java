@@ -22,13 +22,12 @@ public class SubCategoryDao {
 
 	public List<SubCategoryBean> getAllSubCategory() {
 
-		String selectQuery = "select * from subcategory where deleted = false";
+		String joinQuery = "select c.categoryName,sc.categoryId,sc.subCategoryId,sc.SubCategoryName,sc.deleted from category c, subcategory sc where c.categoryId=sc.categoryId and sc.deleted=false";
 
-		List<SubCategoryBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
+		return stmt.query(joinQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
 		
 		//c1 c2 c3 
 		
-		return list;
 	}
 	public void deleteSubCategory(Integer subCategoryId) {
 		String updateQuery="update subCategory set deleted = true where subCategoryId =?";
