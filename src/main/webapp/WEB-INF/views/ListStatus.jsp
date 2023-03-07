@@ -18,7 +18,7 @@
 	<tr>
 		<th>StatusId</th>
 		<th>Status</th>
-		<th>Deleted?</th>
+		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
 <%for(StatusBean sb:list){%>

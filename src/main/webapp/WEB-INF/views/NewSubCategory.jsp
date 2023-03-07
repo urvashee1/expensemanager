@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ExpenseManager | NewSubCategory</title>
+<title>New Sub Category</title>
 </head>
 <body>
 <%

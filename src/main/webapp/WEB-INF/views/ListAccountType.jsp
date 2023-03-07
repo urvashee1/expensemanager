@@ -20,7 +20,7 @@
 	<tr>
 		<th>AccountTypeId</th>
 		<th>AccountType</th>
-		<th>Deleted?</th>
+		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
 <%for(AccountTypeBean cb:list){ %>

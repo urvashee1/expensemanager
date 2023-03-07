@@ -18,7 +18,7 @@
 	<tr>
 		<th>VendorId</th>
 		<th>VendorName</th>
-		<th>Deleted?</th>
+		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
 <%for(VendorBean sb:list){%>

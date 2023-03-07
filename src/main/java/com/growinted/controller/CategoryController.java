@@ -45,6 +45,14 @@ public class CategoryController {
 		categoryDao.deleteCategory(categoryId);
 		return "redirect:/listcategories";
 	}
+
+	@GetMapping("/viewcategory/{categoryId}")
+	public String viewCategory(@PathVariable("categoryId") Integer categoryId,Model model) {
+		CategoryBean categoryBean = categoryDao.getCategoryById(categoryId);
+		model.addAttribute("categoryBean",categoryBean);
+		return "ViewCategory";
+	}
 }
+
 
 

@@ -53,7 +53,7 @@ public String authentication(LoginBean login, Model model){
 	UserBean userBean=userDao.authenticateUser(login);
 	if(userBean== null) {
 		//invaild
-		model.addAttribute("error","invaild Credentials");
+		model.addAttribute("error","Invaild Credentials");
 				return "Login";
 			}
 	else{

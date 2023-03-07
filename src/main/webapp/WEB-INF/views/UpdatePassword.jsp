@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager | Update Password</title>
+<title>Update Password</title>
 </head>
 <body>
 <form action="updatemypassword" method="post">

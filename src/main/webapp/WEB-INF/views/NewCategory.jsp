@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title> ExpenseManager | New Category</title>
+<title>New Category</title>
 </head>
 <body>
 <form action="savecategory" method="post">

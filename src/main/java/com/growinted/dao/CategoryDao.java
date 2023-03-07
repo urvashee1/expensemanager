@@ -38,7 +38,17 @@ public class CategoryDao {
 		stmt.update(updateQuery,categoryId);
 	}
 	// list
-
+public CategoryBean getCategoryById(Integer categoryId) {
+	CategoryBean categoryBean =null;
+	try {
+		categoryBean=stmt.queryForObject("select * from category where categoryId=?",new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class),new Object[] { categoryId});
+		}
+	catch(Exception e) {
+		System.out.println("CategoryDao :: getCategoryById()");
+        System.out.println(e.getMessage());
+	}
+return categoryBean;
+}
 	// update
 
 	// delete

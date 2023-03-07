@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense | Signup </title>
+<title>ExpenseManager | Signup </title>
 </head>
 <body>
 <form action="saveuser" method="post">

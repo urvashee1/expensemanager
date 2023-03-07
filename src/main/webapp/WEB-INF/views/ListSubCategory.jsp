@@ -20,18 +20,20 @@
 
 	<tr>
 		<th>SubCategoryId</th>
-		<th>SubCategoryName</th>
 		<th>CategoryId</th>
-		<th>Deleted?</th>
+		<th>SubCategoryName</th>
+		<th>CategoryName</th>
+		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
 <%for(SubCategoryBean cb:list){ %>
 	<tr>
 		<td><%=cb.getSubCategoryId()%></td>
-		<td><%=cb.getSubCategoryName()%></td>
 		<td><%=cb.getCategoryId()%></td>
+		<td><%=cb.getSubCategoryName()%></td>
+		<td><%=cb.getCategoryName()%></td>
 		<td><%=cb.isDeleted()%></td>
-		<td><a href="deletesubcategory/<%=cb.getSubCategoryId()%>">Delete</a></td>
+		<td><a href="deletesubcategory/<%=cb.getSubCategoryId()%>">Delete</a>
 	</tr>
 <%} %>
 	</table>
