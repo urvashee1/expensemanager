@@ -1,8 +1,9 @@
 package com.growinted.controller;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,14 +41,13 @@ public String saveuser(UserBean user) {
 	return "Login";
 }
 
-
 @GetMapping("/login")
 public String login() {
 	return "Login";
 }
 
 @PostMapping("/authentication")
-public String authentication(LoginBean login, Model model){
+public String authentication(LoginBean login, Model model,HttpServletResponse response,HttpSession session){
 	System.out.println(login.getEmail());
 	System.out.println(login.getPassword());
 	UserBean userBean=userDao.authenticateUser(login);
@@ -57,6 +57,18 @@ public String authentication(LoginBean login, Model model){
 				return "Login";
 			}
 	else{
+		//valid
+		//cookie
+		Cookie c1=new Cookie("userId",userBean.getUserId()+"");
+		Cookie c2=new Cookie("firstName",userBean.getFirstName()+"");
+		//add cookie
+		response.addCookie(c1);
+		response.addCookie(c2);
+		
+		//session
+		session.setAttribute("userId",userBean.getUserId());
+		//max inactive interval time
+		session.setMaxInactiveInterval(60*5);//second
 		if(userBean.getRole() == 1) {
 				//admin
 				return "redirect:/admindashboard";
@@ -117,5 +129,10 @@ else {
 	userDao.updateMyPasword(upBean);
     return "Login";
 }
+}
+@GetMapping("/logout")
+public String logout(HttpSession session) {
+	session.invalidate();
+	return "redirect:/login";
 }
 }

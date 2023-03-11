@@ -25,7 +25,7 @@ for(CategoryBean cb : list){
 }
 %>
 </select><br><br>
-		<input type="submit" value="Add SubCategory"/>
+		<input type="submit" value="Save SubCategory"/>
 </form><br>
 	<a href="listsubcategories">List Sub Category</a>
 </body>

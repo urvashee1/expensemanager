@@ -32,7 +32,7 @@ public List<StatusBean> getAllStatus() {
 }
 
 public void deleteStatus(Integer statusId) {
-	String updateQuery="delete from status where statusId=?";
+	String updateQuery="update status set deleted = true where statusId =?";
 	stmt.update(updateQuery,statusId);
 }
 }

@@ -9,7 +9,7 @@
 <body>
 <form action="savestatus" method="post">
 Status:<input type="text" name="status"><br><br>
-<input type="submit" value="Status"/>
+<input type="submit" value="Save Status"/>
 </form><br>
 <a href="liststatus">List Status</a>
 </body>

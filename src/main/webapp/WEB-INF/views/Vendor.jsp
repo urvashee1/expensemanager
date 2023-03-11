@@ -9,7 +9,7 @@
 <body>
 <form action="savevendor" method="post">
 VendorName:<input type="text" name="vendorName"><br><br>
-<input type="submit" value="Vendor"/>
+<input type="submit" value="Save Vendor"/>
 </form><br>
 <a href="listvendor">List Vendor</a>
 </body>

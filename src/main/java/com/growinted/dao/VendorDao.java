@@ -32,7 +32,7 @@ public List<VendorBean> getAllVendor() {
 }
 
 public void deleteVendor(Integer vendorId) {
-	String updateQuery="delete from vendor where vendorId=?";
+	String updateQuery="update vendor set deleted = true where vendorId =?";
 	stmt.update(updateQuery,vendorId);
 }
 }

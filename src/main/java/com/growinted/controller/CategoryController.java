@@ -3,6 +3,9 @@ package com.growinted.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +23,23 @@ public class CategoryController {
 	CategoryDao categoryDao;
 
 	@GetMapping("/newcategory") // url--browser
-	public String newCategory() { // method
-
+	public String newCategory(HttpServletRequest request) { // method
+		// cookie name
+       //  cookie userid 
+       int userId=-1;
+       //read all cookies from request
+       String firstName="";
+       Cookie c[]=request.getCookies();//jsEssionId userId octo firstName 
+       for(Cookie x:c) {//jsessionid userId firstName
+    	   if(x.getName().equals("userId")) {
+    		   userId=Integer.parseInt(x.getValue());
+    	   }
+    	   if(x.getName().equals("firstName")) {
+    		   firstName=x.getValue();
+    		   }
+       }
+       System.out.println("usrId ->"+userId);
+       System.out.println("firstName->"+firstName);
 		return "NewCategory";// jsp--open
 	}
 
