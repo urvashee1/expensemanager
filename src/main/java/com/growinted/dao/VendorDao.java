@@ -24,11 +24,11 @@ public List<VendorBean> getAllVendor() {
 
 	String selectQuery = "select * from vendor where deleted = false";
 
-	List<VendorBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<VendorBean>(VendorBean.class));
+	List<VendorBean> list3 =  stmt.query(selectQuery, new BeanPropertyRowMapper<VendorBean>(VendorBean.class));
 	
 	//c1 c2 c3 
 	
-	return list;
+	return list3;
 }
 
 public void deleteVendor(Integer vendorId) {

@@ -40,7 +40,7 @@ public String saveincome(IncomeBean incomeBean) {
 	System.out.println(incomeBean.getAccountTypeId());
 	System.out.println(incomeBean.getStatusId());
 	incomeDao.addIncome(incomeBean);
-	return "Income";
+	return "redirect:/listincome";
 }
 @GetMapping("/listincome")
 public String listIncome(Model model) {

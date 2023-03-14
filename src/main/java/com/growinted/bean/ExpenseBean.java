@@ -13,6 +13,7 @@ private Integer accountTypeId;
 private Integer statusId;
 private String amount;
 private boolean deleted;
+private String firstName;
 private String categoryName;
 private String subCategoryName;
 private String vendorName;
@@ -89,6 +90,12 @@ public boolean getDeleted() {
 }
 public void setDeleted(boolean deleted) {
 	this.deleted = deleted;
+}
+public String getFirstName() {
+	return firstName;
+}
+public void setUserName(String firstName) {
+	this.firstName = firstName;
 }
 public String getCategoryName() {
 	return categoryName;

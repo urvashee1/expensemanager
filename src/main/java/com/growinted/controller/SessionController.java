@@ -1,4 +1,6 @@
 package com.growinted.controller;
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -134,5 +136,11 @@ else {
 public String logout(HttpSession session) {
 	session.invalidate();
 	return "redirect:/login";
+}
+@GetMapping("/listuser")
+public String listUser(Model model) {
+	List<UserBean>listUser=userDao.getAllUser();
+	model.addAttribute("listUser",listUser);
+	return "ListUser";
 }
 }

@@ -15,6 +15,7 @@ import com.growinted.bean.CategoryBean;
 import com.growinted.bean.ExpenseBean;
 import com.growinted.bean.StatusBean;
 import com.growinted.bean.SubCategoryBean;
+import com.growinted.bean.UserBean;
 import com.growinted.bean.VendorBean;
 import com.growinted.dao.AccountTypeDao;
 import com.growinted.dao.CategoryDao;
@@ -34,20 +35,23 @@ public class ExpenseController {
 	SubCategoryDao subcategoryDao;
 	@Autowired
 	VendorDao vendorDao;
-	@Autowired
+    @Autowired
 	AccountTypeDao accountTypeDao;
-	@Autowired
+    @Autowired
 	StatusDao statusDao;
-	@Autowired
+    @Autowired
 	ExpenseDao expenseDao;
+    
 @GetMapping("/newexpense")
 public String newExpense(Model model) { // method
-//
+//	
+	    List<UserBean> list=userDao.getAllUser();
         List<CategoryBean> list1=categoryDao.getAllCategory();
         List<SubCategoryBean> list2=subcategoryDao.getAllSubCategory();
         List<VendorBean> list3=vendorDao.getAllVendor();
         List<AccountTypeBean> list4=accountTypeDao.getAllAccountType();
         List<StatusBean> list5=statusDao.getAllStatus();
+        model.addAttribute("list",list);
 		model.addAttribute("list1",list1);
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
@@ -68,7 +72,7 @@ public String saveexpense(ExpenseBean expenseBean) {
 	System.out.println(expenseBean.getStatusId());
 	System.out.println(expenseBean.getAmount());
 	expenseDao.addExpense(expenseBean);
-	return "Expense";
+	return "redirect:/listexpense";
 }
 @GetMapping("/listexpense")
 public String listExpense(Model model) {

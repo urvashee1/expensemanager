@@ -1,5 +1,7 @@
 package com.growinted.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -66,5 +68,15 @@ return user;
 		System.out.println(e.getMessage());
      }
 return null;
+}
+public List<UserBean> getAllUser() {
+
+	String selectQuery = "select * from users";
+
+	List<UserBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+	
+	//c1 c2 c3 
+	
+	return list;
 }
 }

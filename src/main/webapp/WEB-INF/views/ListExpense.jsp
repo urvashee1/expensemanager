@@ -18,6 +18,7 @@
 	<tr>
 		<th>ExpenseId</th>
 		<th>Title</th>
+		<th>UserId</th>
 		<th>CategoryId</th>
 		<th>SubCategoryId</th>
 		<th>VendorId</th>
@@ -25,6 +26,7 @@
 		<th>StatusId</th>
 		<th>Amount</th>
 		<th>Date</th>
+		<th>FirstName</th>
 		<th>CategoryName</th>
 		<th>SubCategoryName</th>
 		<th>VendorName</th>
@@ -37,6 +39,7 @@
 	<tr>
 		<td><%=sb.getExpenseId()%></td>
 		<td><%=sb.getTitle()%></td>
+		<td><%=sb.getUserId()%></td>
 		<td><%=sb.getCategoryId()%></td>
 		<td><%=sb.getSubCategoryId()%></td>
 		<td><%=sb.getVendorId()%></td>
@@ -44,6 +47,7 @@
 		<td><%=sb.getStatusId()%></td>
 		<td><%=sb.getAmount()%></td>
 		<td><%=sb.getDate()%></td>
+		<td><%=sb.getFirstName()%></td>
 		<td><%=sb.getCategoryName()%></td>
 		<td><%=sb.getSubCategoryName()%></td>
 		<td><%=sb.getVendorName()%></td>

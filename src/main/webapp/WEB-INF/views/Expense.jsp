@@ -15,6 +15,9 @@
 </head>
 <body>
 <%
+List<UserBean> list=(List<UserBean>) request.getAttribute("list");
+%>
+<%
 List<CategoryBean> list1=(List<CategoryBean>) request.getAttribute("list1");
 %>
 <%
@@ -34,6 +37,16 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 			Amount : <input type="text" name="amount"/><br><br>
 			Date : <input type="date" name="date"/><br><br>
 			Description : <input type="text" name="description"/><br><br>
+Users <select name="userId">
+<%
+for(UserBean cb : list){
+%>
+<option value="<%=cb.getUserId()%>">
+<%=cb.getFirstName()%></option>
+<%
+}
+%>
+</select><br><br>
 Category <select name="categoryId">
 <%
 for(CategoryBean cb : list1){
