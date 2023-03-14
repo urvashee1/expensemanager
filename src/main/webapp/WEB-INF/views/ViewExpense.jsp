@@ -14,9 +14,9 @@ ExpenseBean expenseBean=(ExpenseBean)request.getAttribute("expenseBean");
 %>
 ExpenseId:<%=expenseBean.getExpenseId()%><br>
 Title:<%=expenseBean.getTitle()%><br>
-Amount:<%=expenseBean.getAmount()%><br>
 Date:<%=expenseBean.getDate()%><br>
 Description:<%=expenseBean.getDescription()%><br>
+Amount:<%=expenseBean.getAmount()%><br>
 Deleted:<%=expenseBean.getDeleted()%>
 </body>
 </html>

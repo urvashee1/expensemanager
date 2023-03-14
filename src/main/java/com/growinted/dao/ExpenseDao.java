@@ -24,12 +24,11 @@ stmt.update(insertQuery, expenseBean.getTitle(),expenseBean.getDate(),expenseBea
 public List<ExpenseBean> getAllExpense() {
 
 
-	String joinQuery = "select e.expenseId,u.firstName,c.categoryName,sc.subCategoryName,v.vendorName,a.accountType,s.status,e.userId,e.categoryId,e.subCategoryId,e.vendorId,e.accountTypeId,e.statusId,e.title,e.date,e.description,e.amount,e.deleted from users u,category c, subcategory sc,vendor v,accounttype a,status s,expense e where u.userId=e.userId and c.categoryId=e.categoryId and sc.subCategoryId=e.subCategoryId and v.vendorId=e.vendorId and a.accountTypeId=e.accountTypeId and s.statusId=e.statusId and e.deleted=false";
+	String joinQuery = "select u.firstName,e.userId,c.categoryName,e.categoryId,sc.subCategoryName,e.subCategoryId,v.vendorName,e.vendorId,a.accountType,e.accountTypeId,s.status,e.statusId, e.expenseId,e.title,e.date,e.description,e.amount,e.deleted from users u,category c, subcategory sc,vendor v,accounttype a,status s,expense e where u.userId=e.userId and c.categoryId=e.categoryId and sc.subCategoryId=e.subCategoryId and v.vendorId=e.vendorId and a.accountTypeId=e.accountTypeId and s.statusId=e.statusId and e.deleted=false";
 
 	return stmt.query(joinQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class));
 	
 	//c1 c2 c3 
-	
 }
 
 public void deleteExpense(Integer expenseId) {

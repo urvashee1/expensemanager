@@ -1,3 +1,4 @@
+<%@page import="com.growinted.bean.UserBean"%>
 <%@page import="com.growinted.bean.StatusBean"%>
 <%@page import="com.growinted.bean.AccountTypeBean"%>
 <%@page import="java.util.List"%>
@@ -11,6 +12,9 @@
 </head>
 <body>
 <%
+List<UserBean> list=(List<UserBean>) request.getAttribute("list");
+%>
+<%
 List<AccountTypeBean> list1=(List<AccountTypeBean>) request.getAttribute("list1");
 %>
 <%
@@ -20,6 +24,16 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
 			Title : <input type="text" name="title"/><br><br>
 			Date : <input type="date" name="date"/><br><br>
 			Description : <input type="text" name="description"/><br><br>
+FirstName <select name="userId">
+<%
+for(UserBean cb : list){
+%>
+<option value="<%=cb.getUserId()%>">
+<%=cb.getFirstName()%></option>
+<%
+}
+%>
+</select><br><br>
 Account Type <select name="accountTypeId">
 <%
 for(AccountTypeBean cb : list1){

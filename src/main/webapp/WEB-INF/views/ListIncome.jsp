@@ -20,8 +20,12 @@
 		<th>Title</th>
 		<th>Date</th>
 		<th>Description</th>
+		<th>UserId</th>
 		<th>AccountTypeId</th>
 		<th>StatusId</th>
+		<th>FirstName</th>
+		<th>AccountType</th>
+		<th>Status</th>
 		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
@@ -31,8 +35,12 @@
 		<td><%=sb.getTitle()%></td>
 		<td><%=sb.getDate()%></td>
 		<td><%=sb.getDescription()%></td>
+		<td><%=sb.getUserId()%></td>
 		<td><%=sb.getAccountTypeId()%></td>
 		<td><%=sb.getStatusId()%></td>
+		<td><%=sb.getFirstName()%></td>
+		<td><%=sb.getAccountType()%></td>
+		<td><%=sb.getStatus()%></td>
 		<td><%=sb.getDeleted()%></td>
 		<td><a href="deleteincome/<%=sb.getIncomeId()%>">Delete</a> |
 		<a href="viewincome/<%=sb.getIncomeId()%>">View</a></td>

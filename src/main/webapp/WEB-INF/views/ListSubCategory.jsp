@@ -14,8 +14,6 @@
 <% 
  List<SubCategoryBean> list =(List<SubCategoryBean>)request.getAttribute("list");
 %>
-
-
 <table border="1">
 
 	<tr>

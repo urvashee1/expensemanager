@@ -5,13 +5,13 @@ private Integer expenseId;
 private String title;
 private String date;
 private String description;
-private String userId;
+private Integer userId;
 private Integer categoryId;
 private Integer subCategoryId;
 private Integer vendorId;
 private Integer accountTypeId;
 private Integer statusId;
-private String amount;
+private Integer amount;
 private boolean deleted;
 private String firstName;
 private String categoryName;
@@ -43,10 +43,10 @@ public String getDescription() {
 public void setDescription(String description) {
 	this.description = description;
 }
-public String getUserId() {
+public Integer getUserId() {
 	return userId;
 }
-public void setUserId(String userId) {
+public void setUserId(Integer userId) {
 	this.userId = userId;
 }
 public Integer getCategoryId() {
@@ -79,10 +79,10 @@ public Integer getStatusId() {
 public void setStatusId(Integer statusId) {
 	this.statusId = statusId;
 }
-public String getAmount() {
+public Integer getAmount() {
 	return amount;
 }
-public void setAmount(String amount) {
+public void setAmount(Integer amount) {
 	this.amount = amount;
 }
 public boolean getDeleted() {

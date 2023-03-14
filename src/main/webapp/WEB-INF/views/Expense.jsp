@@ -34,10 +34,9 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 %>
 <form action="saveexpense" method="post">
 			Title : <input type="text" name="title"/><br><br>
-			Amount : <input type="text" name="amount"/><br><br>
 			Date : <input type="date" name="date"/><br><br>
 			Description : <input type="text" name="description"/><br><br>
-Users <select name="userId">
+FirstName <select name="userId">
 <%
 for(UserBean cb : list){
 %>
@@ -97,6 +96,7 @@ for(StatusBean cb : list5){
 }
 %>
 </select><br><br>
+Amount : <input type="text" name="amount"/><br><br>
 		<input type="submit" value="Save Expense"/>
 </form><br>
 	<a href="listexpense">List Expense</a>

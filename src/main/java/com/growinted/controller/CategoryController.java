@@ -38,7 +38,7 @@ public class CategoryController {
     		   firstName=x.getValue();
     		   }
        }
-       System.out.println("usrId ->"+userId);
+       System.out.println("userId ->"+userId);
        System.out.println("firstName->"+firstName);
 		return "NewCategory";// jsp--open
 	}

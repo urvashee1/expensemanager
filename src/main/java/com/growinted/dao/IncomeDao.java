@@ -13,16 +13,16 @@ public class IncomeDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void addIncome(IncomeBean incomeBean) {
-	String insertQuery = "insert into income (title,date,description,accountTypeId,statusId,deleted) values (?,?,?,?,?,?) ";
+	String insertQuery = "insert into income (title,date,description,userId,accountTypeId,statusId,deleted) values (?,?,?,?,?,?,?) ";
 
-	stmt.update(insertQuery, incomeBean.getTitle(),incomeBean.getDate(),incomeBean.getDescription(),incomeBean.getAccountTypeId(),incomeBean.getStatusId(),false);// insert //update //delete
+	stmt.update(insertQuery, incomeBean.getTitle(),incomeBean.getDate(),incomeBean.getDescription(),incomeBean.getUserId(),incomeBean.getAccountTypeId(),incomeBean.getStatusId(),false);// insert //update //delete
 	}
 
 	public List<IncomeBean> getAllIncome() {
 
-		String selectQuery = "select * from income where deleted = false";
+		String joinQuery = "select u.firstName,i.userId,a.accountType,i.accountTypeId,s.status,i.statusId,i.incomeId,i.title,i.date,i.description,i.deleted from users u, accounttype a,status s,income i where u.userId=i.userId and a.accountTypeId=i.accountTypeId and s.statusId=i.statusId and i.deleted=false";
 
-		List<IncomeBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class));
+		List<IncomeBean> list =  stmt.query(joinQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class));
 		
 		//c1 c2 c3 
 		

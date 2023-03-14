@@ -5,9 +5,13 @@ private Integer incomeId;
 private String title;
 private String date;
 private String description;
+private Integer userId;
 private Integer accountTypeId;
 private Integer statusId;
 private Boolean deleted;
+private String firstName;
+private String accountType;
+private String status;
 public Integer getIncomeId() {
 	return incomeId;
 }
@@ -32,6 +36,12 @@ public String getDescription() {
 public void setDescription(String description) {
 	this.description = description;
 }
+public Integer getUserId() {
+	return userId;
+}
+public void setUserId(Integer userId) {
+	this.userId = userId;
+}
 public Integer getAccountTypeId() {
 	return accountTypeId;
 }
@@ -49,5 +59,23 @@ public Boolean getDeleted() {
 }
 public void setDeleted(Boolean deleted) {
 	this.deleted = deleted;
+}
+public String getFirstName() {
+	return firstName;
+}
+public void setFirstName(String firstName) {
+	this.firstName = firstName;
+}
+public String getAccountType() {
+	return accountType;
+}
+public void setAccountType(String accountType) {
+	this.accountType = accountType;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
 }
 }
