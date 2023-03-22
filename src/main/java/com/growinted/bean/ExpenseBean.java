@@ -94,7 +94,7 @@ public void setDeleted(boolean deleted) {
 public String getFirstName() {
 	return firstName;
 }
-public void setUserName(String firstName) {
+public void setfirstName(String firstName) {
 	this.firstName = firstName;
 }
 public String getCategoryName() {

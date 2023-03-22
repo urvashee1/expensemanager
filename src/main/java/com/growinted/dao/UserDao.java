@@ -79,4 +79,14 @@ public List<UserBean> getAllUser() {
 	
 	return list;
 }
+public UserBean getUserByEmail(String email) {
+	String selectQuery="select * from users where email=?";
+	try {
+		return stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] {email});
+	}
+	catch(Exception e) {
+		System.out.println(e.getMessage());
+	}
+    return null;
+}
 }

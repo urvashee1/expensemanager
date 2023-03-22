@@ -14,8 +14,14 @@ IncomeBean incomeBean=(IncomeBean)request.getAttribute("incomeBean");
 %>
 IncomeId:<%=incomeBean.getIncomeId()%><br>
 Title:<%=incomeBean.getTitle()%><br>
+UserId:<%=incomeBean.getUserId()%><br>
+AccountTypeId:<%=incomeBean.getAccountTypeId()%><br>
+StatusId:<%=incomeBean.getStatusId()%><br>
 Date:<%=incomeBean.getDate()%><br>
 Description:<%=incomeBean.getDescription()%><br>
-Deleted:<%=incomeBean.getDeleted()%>
+Deleted:<%=incomeBean.getDeleted()%><br>
+FirstName:<%=incomeBean.getFirstName()%><br>
+AccountType:<%=incomeBean.getAccountType()%><br>
+Status:<%=incomeBean.getStatus()%><br>
 </body>
 </html>

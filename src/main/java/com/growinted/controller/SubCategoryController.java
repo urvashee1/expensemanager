@@ -35,7 +35,7 @@ public class SubCategoryController {
 		System.out.println(subcategoryBean.getSubCategoryName()); // categoryName;
 		System.out.println(subcategoryBean.getCategoryId());
 		subcategoryDao.addSubCategory(subcategoryBean);
-		return "NewCategory";
+		return "redirect:/listsubcategories";
 
 }
 @GetMapping("/listsubcategories")

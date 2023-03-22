@@ -8,7 +8,11 @@ private String email;
 private String password;
 private Integer role;
 private String otp;
-
+private String gender;
+private String dob;
+private String createdAt;
+private String active;
+private String contactNo;
 public Integer getUserId() {
 	return userId;
 }
@@ -51,8 +55,36 @@ public String getOtp() {
 public void setOtp(String otp) {
 	this.otp = otp;
 }
-
-
+public String getGender() {
+	return gender;
+}
+public void setGender(String gender) {
+	this.gender = gender;
+}
+public String getDob() {
+	return dob;
+}
+public void setDob(String dob) {
+	this.dob = dob;
+}
+public String getCreatedAt() {
+	return createdAt;
+}
+public void setCreatedAt(String createdAt) {
+	this.createdAt = createdAt;
+}
+public String getActive() {
+	return active;
+}
+public void setActive(String active) {
+	this.active = active;
+}
+public String getContactNo() {
+	return contactNo;
+}
+public void setContactNo(String contactNo) {
+	this.contactNo = contactNo;
+}
 }
 
 

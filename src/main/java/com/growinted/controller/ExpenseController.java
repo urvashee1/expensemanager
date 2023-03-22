@@ -46,7 +46,7 @@ public class ExpenseController {
 	ExpenseDao expenseDao;
     
 @GetMapping("/newexpense")
-public String newExpense(Model model,HttpServletRequest request) { // method
+public String newExpense(Model model) { // method
 //	
 	    List<UserBean> list=userDao.getAllUser();
         List<CategoryBean> list1=categoryDao.getAllCategory();
@@ -61,29 +61,11 @@ public String newExpense(Model model,HttpServletRequest request) { // method
 		model.addAttribute("list4",list4);
 		model.addAttribute("list5",list5);
 		
-			// cookie name
-	       //  cookie userid 
-	       int userId=-1;
-	       //read all cookies from request
-	       String firstName="";
-	       Cookie c[]=request.getCookies();//jsEssionId userId octo firstName 
-	       for(Cookie x:c) {//jsessionid userId firstName
-	    	   if(x.getName().equals("userId")) {
-	    		   userId=Integer.parseInt(x.getValue());
-	    	   }
-	    	   if(x.getName().equals("firstName")) {
-	    		   firstName=x.getValue();
-	    		   }
-	       }
-	       System.out.println("userId ->"+userId);
-	       System.out.println("firstName->"+firstName);
 	       return "Expense";
 }
 @PostMapping("/saveexpense")
-public String saveexpense(ExpenseBean expenseBean) {
+public String saveexpense(ExpenseBean expenseBean,HttpServletRequest request) {
 	System.out.println(expenseBean.getTitle());
-	System.out.println(expenseBean.getDate());
-	System.out.println(expenseBean.getDescription());
 	System.out.println(expenseBean.getUserId());
 	System.out.println(expenseBean.getCategoryId());
 	System.out.println(expenseBean.getSubCategoryId());
@@ -91,6 +73,29 @@ public String saveexpense(ExpenseBean expenseBean) {
 	System.out.println(expenseBean.getAccountTypeId());
 	System.out.println(expenseBean.getStatusId());
 	System.out.println(expenseBean.getAmount());
+	System.out.println(expenseBean.getDate());
+	System.out.println(expenseBean.getDescription());
+	
+	//
+
+	// cookie name
+   //  cookie userid 
+   int userId=-1;
+   //read all cookies from request
+   String firstName="";
+   Cookie c[]=request.getCookies();//jsEssionId userId octo firstName 
+   for(Cookie x:c) {//jsessionid userId firstName
+	   if(x.getName().equals("userId")) {
+		   userId=Integer.parseInt(x.getValue());
+	   }
+	   if(x.getName().equals("firstName")) {
+		   firstName=x.getValue();
+		   }
+   }
+   System.out.println("userId ->"+userId);
+   System.out.println("firstName->"+firstName);
+	
+    expenseBean.setUserId(userId);
 	expenseDao.addExpense(expenseBean);
 	return "redirect:/listexpense";
 }

@@ -36,7 +36,7 @@ public class IncomeDao {
 	public IncomeBean getincomeById(Integer incomeId) {
 		IncomeBean incomeBean =null;
 		try {
-			incomeBean=stmt.queryForObject("select * from income where incomeId=?",new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {incomeId});
+			incomeBean=stmt.queryForObject("select i.* ,u.firstname, s.status, a.accounttype from income i,users u, status s,accounttype a where incomeId=? and i.userId=u.userId and i.statusId = s.statusId and i.accounttypeId=a.accounttypeId",new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class),new Object[] {incomeId});
 			}
 		catch(Exception e) {
 			System.out.println("incomeDao :: getincomeById()");

@@ -38,7 +38,16 @@ public String newincome(Model model,HttpServletRequest request) {
     model.addAttribute("list",list);
     model.addAttribute("list1",list1);
 	model.addAttribute("list2",list2);
-	
+	return "Income";
+}
+@PostMapping("/saveincome")
+public String saveincome(IncomeBean incomeBean,HttpServletRequest request) {
+	System.out.println(incomeBean.getTitle());
+    System.out.println(incomeBean.getUserId());
+	System.out.println(incomeBean.getAccountTypeId());
+	System.out.println(incomeBean.getStatusId());
+	System.out.println(incomeBean.getDate());
+	System.out.println(incomeBean.getDescription());
 	int userId=-1;
     //read all cookies from request
     String firstName="";
@@ -53,16 +62,7 @@ public String newincome(Model model,HttpServletRequest request) {
     }
     System.out.println("userId ->"+userId);
     System.out.println("firstName->"+firstName);
-	return "Income";
-}
-@PostMapping("/saveincome")
-public String saveincome(IncomeBean incomeBean) {
-	System.out.println(incomeBean.getTitle());
-	System.out.println(incomeBean.getDate());
-	System.out.println(incomeBean.getDescription());
-	System.out.println(incomeBean.getUserId());
-	System.out.println(incomeBean.getAccountTypeId());
-	System.out.println(incomeBean.getStatusId());
+    incomeBean.setUserId(userId);
 	incomeDao.addIncome(incomeBean);
 	return "redirect:/listincome";
 }

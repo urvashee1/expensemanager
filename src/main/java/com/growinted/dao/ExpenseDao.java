@@ -2,14 +2,12 @@ package com.growinted.dao;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.growinted.bean.ExpenseBean;
-
 
 @Repository
 public class ExpenseDao {
@@ -38,7 +36,7 @@ public void deleteExpense(Integer expenseId) {
 public ExpenseBean getExpenseById(Integer expenseId) {
 	ExpenseBean expenseBean =null;
 	try {
-		expenseBean=stmt.queryForObject("select * from expense where expenseId=?",new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {expenseId});
+		expenseBean=stmt.queryForObject("select e.* ,u.firstname,c.categoryname,sc.subcategoryname,v.vendorname,a.accounttype,s.status from expense e,users u,category c,subcategory sc,vendor v,accounttype a,status s where expenseId=? and e.userId=u.userId and e.categoryId=c.categoryId and e.subcategoryId=sc.subcategoryId and e.vendorId=v.vendorId and e.accounttypeId=a.accounttypeId and e.statusId = s.statusId",new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {expenseId});
 		}
 	catch(Exception e) {
 		System.out.println("ExpenseDao :: getExpenseById()");

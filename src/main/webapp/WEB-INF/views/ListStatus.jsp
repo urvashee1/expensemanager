@@ -7,28 +7,75 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Status</title>
+<jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<h3>List Status</h3>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+<jsp:include page="AdminSideBar.jsp"></jsp:include>
 <%  
  List<StatusBean> list =(List<StatusBean>) request.getAttribute("listStatus");
 %>
-<table border="1">
+<main id="main" class="main">
+<div class="pagetitle">
+<h1>Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Status</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-	<tr>
-		<th>StatusId</th>
-		<th>Status</th>
-		<th>Deleted</th>
-		<th>Action</th>
-	</tr>
-<%for(StatusBean sb:list){%>
-	<tr>
-		<td><%=sb.getStatusId()%></td>
-		<td><%=sb.getStatus()%></td>
-		<td><%=sb.getDeleted()%></td>
-		<td><a href="deletestatus/<%=sb.getStatusId()%>">Delete</a></td>
-	</tr>
-	
-<%} %>
+    <section class="section">
+    <div class="row">
+				<div class="col-lg-12">
+         <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">List Status</h5>
+              <div class="datatable-container">
+              <table class="table table-borderless datatable">
+                <thead>
+                  <tr>
+                   <th>StatusId</th>
+                  <th>Status</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <%for(StatusBean cb:list){ %>
+	           <tr>
+		       <td><%=cb.getStatusId()%></td>
+		       <td><%=cb.getStatus()%></td>
+	       	   <td><%=cb.getDeleted()%></td>
+	       	   <td>
+	       	   <a class="btn btn-info">Edit</a> 
+                 <a class="btn btn-danger" href="deletecategory/<%=cb.getStatusId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a>
+                 </td>
+	           </tr>
+	           <%} %>
+                  </tbody>
+              </table>
+              </div>
+                      <a href="newstatus"><div style="margin-left:1090px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+              
+</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+</main>
+<jsp:include page="AdminFooter.jsp"></jsp:include>
+<jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>
+
+
+    
+
+           
+                    
+                
+    

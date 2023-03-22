@@ -33,14 +33,23 @@ public String signup() {
 	return "Signup";
 }
 @PostMapping("/saveuser")
-public String saveuser(UserBean user) {
+public String saveuser(UserBean user,Model model) {
 	System.out.println("Jai Hind...");
 	System.out.println(user.getFirstName());
 	System.out.println(user.getLastName());
 	System.out.println(user.getEmail());
 	System.out.println(user.getPassword());
-	userDao.insertUser(user);
+	System.out.println(user.getRole());
+	
+	UserBean userBean=userDao.getUserByEmail(user.getEmail());
+	if(userBean==null) {
+		userDao.insertUser(user);
 	return "Login";
+	}else {
+		model.addAttribute("error","Email is already Registerd with Us");
+		return "Signup";
+	}
+	
 }
 
 @GetMapping("/login")
