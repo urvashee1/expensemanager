@@ -10,7 +10,6 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<h3>List Income</h3>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 <%  
@@ -36,7 +35,7 @@
               <h5 class="card-title">List Income</h5>
               <div class="datatable-container">
              
-    <table class="table table-borderless datatable">
+    <table class="table table-borderless datatable id="listincome">
                 <thead>
                   <tr>
                    <th>IncomeId</th>
@@ -70,7 +69,7 @@
 		 <td>
 		<a class="btn btn-info">Edit</a> 
 		<a class="btn btn-danger" href="deleteincome/<%=sb.getIncomeId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a> 
-		<a class="btn btn-dark" href="viewincome/<%=sb.getIncomeId()%>">View</a></td>
+		<a class="btn btn-dark" href="viewincome?incomeId=<%=sb.getIncomeId()%>">View</a></td>
 	    </tr>
 	    <%} %>
         </tbody>

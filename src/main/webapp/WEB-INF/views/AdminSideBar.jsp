@@ -12,6 +12,11 @@
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+         <li>
+            <a href="newuser">
+              <i class="bi bi-circle"></i><span>User</span>
+            </a>
+          </li>
           <li>
             <a href="newcategory">
               <i class="bi bi-circle"></i><span>Category</span>

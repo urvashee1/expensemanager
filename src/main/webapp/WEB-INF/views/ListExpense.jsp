@@ -10,7 +10,6 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<h3>List Expense</h3>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 <%  
@@ -36,7 +35,7 @@
               <h5 class="card-title">List Expense</h5>    
               
               <div class="datatable-container">
-									<table class="table table-borderless datatable">
+									<table class="table table-borderless datatable" id="listexpense">
                 <thead>
                   <tr>
                    <th>ExpenseId</th>
@@ -84,7 +83,7 @@
 		<td>
 		<a class="btn btn-info">Edit</a> 
 		<a class="btn btn-danger" href="deleteexpense/<%=sb.getExpenseId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a>
-		<a class="btn btn-dark" href="viewexpense/<%=sb.getExpenseId()%>">View</a></td>
+		<a class="btn btn-dark" href="viewexpense?expenseId=<%=sb.getExpenseId()%>">View</a></td>
 		</tr>
 	    <%} %>
                   </tbody>

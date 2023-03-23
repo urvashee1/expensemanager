@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.AccountTypeBean;
 import com.growinted.bean.IncomeBean;
@@ -78,9 +79,9 @@ public String deleteincome(@PathVariable("incomeId") Integer incomeId) {
 	incomeDao.deleteIncome(incomeId);
 	return "redirect:/listincome";
 }
-@GetMapping("/viewincome/{incomeId}")
-public String viewIncome(@PathVariable("incomeId") Integer incomeId,Model model) {
-	IncomeBean incomeBean = incomeDao.getincomeById(incomeId);
+@GetMapping("/viewincome")
+public String viewIncomeById(@RequestParam("incomeId") Integer incomeId,Model model) {
+	IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
 	model.addAttribute("incomeBean",incomeBean);
 	return "ViewIncome";
 }

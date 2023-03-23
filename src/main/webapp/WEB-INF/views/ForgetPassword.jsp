@@ -67,7 +67,7 @@ ${error}<br>
 
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
+                  <img src="assets/img/img1.jpg" alt="">
                   <span class="d-none d-lg-block">ExpenseManager</span>
                 </a>
               </div><!-- End Logo -->
@@ -95,8 +95,8 @@ ${error}<br>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
                         <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>-->
-                    </div>
+                      </div>
+                    </div>-->
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Send Otp</button>
                     </div>
@@ -115,11 +115,11 @@ ${error}<br>
             </div>
           </div>
         </div>
-
+   
       </section>
-
-    </div>
+      </div>
   </main><!-- End #main -->
+ 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

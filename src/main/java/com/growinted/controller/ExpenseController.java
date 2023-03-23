@@ -2,7 +2,6 @@ package com.growinted.controller;
 
 import java.util.List;
 
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.AccountTypeBean;
 import com.growinted.bean.CategoryBean;
@@ -111,8 +111,8 @@ public String deleteexpense(@PathVariable("expenseId") Integer expenseId) {
 	expenseDao.deleteExpense(expenseId);
 	return "redirect:/listexpense";
 }
-@GetMapping("/viewexpense/{expenseId}")
-public String viewExpense(@PathVariable("expenseId") Integer expenseId,Model model) {
+@GetMapping("/viewexpense")
+public String viewExpenseById(@RequestParam("expenseId") Integer expenseId,Model model) {
 	ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
 	model.addAttribute("expenseBean",expenseBean);
 	return "ViewExpense";

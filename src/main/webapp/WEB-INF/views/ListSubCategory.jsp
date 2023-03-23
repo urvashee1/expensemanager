@@ -11,7 +11,6 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<h3>List Sub Category</h3>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 
