@@ -11,7 +11,7 @@ private String otp;
 private String gender;
 private String dob;
 private String createdAt;
-private String active;
+private Boolean active;
 private String contactNo;
 public Integer getUserId() {
 	return userId;
@@ -73,10 +73,10 @@ public String getCreatedAt() {
 public void setCreatedAt(String createdAt) {
 	this.createdAt = createdAt;
 }
-public String getActive() {
+public Boolean isActive() {
 	return active;
 }
-public void setActive(String active) {
+public void setActive(Boolean active) {
 	this.active = active;
 }
 public String getContactNo() {

@@ -32,7 +32,7 @@ public class IncomeController {
 	@Autowired
 	IncomeDao incomeDao;
 @GetMapping("/newincome")
-public String newincome(Model model,HttpServletRequest request) {
+public String newincome(Model model) {
 	List<UserBean> list=userDao.getAllUser();
     List<AccountTypeBean> list1=accountTypeDao.getAllAccountType();
     List<StatusBean> list2=statusDao.getAllStatus();
@@ -44,11 +44,6 @@ public String newincome(Model model,HttpServletRequest request) {
 @PostMapping("/saveincome")
 public String saveincome(IncomeBean incomeBean,HttpServletRequest request) {
 	System.out.println(incomeBean.getTitle());
-    System.out.println(incomeBean.getUserId());
-	System.out.println(incomeBean.getAccountTypeId());
-	System.out.println(incomeBean.getStatusId());
-	System.out.println(incomeBean.getDate());
-	System.out.println(incomeBean.getDescription());
 	int userId=-1;
     //read all cookies from request
     String firstName="";

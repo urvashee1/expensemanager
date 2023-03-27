@@ -55,7 +55,7 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
                     <option>...</option>-->
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Sub Category</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                  <a type="button" href="listsubcategories" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
 <a href="listsubcategories">List Sub Category</a>

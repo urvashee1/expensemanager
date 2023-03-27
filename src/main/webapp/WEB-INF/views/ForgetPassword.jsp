@@ -28,7 +28,7 @@ ${error}<br>
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/img1.jpg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -97,6 +97,7 @@ ${error}<br>
                         <label class="form-check-label" for="rememberMe">Remember me</label>
                       </div>
                     </div>-->
+                    <br>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Send Otp</button>
                     </div>

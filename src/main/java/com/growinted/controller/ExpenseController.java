@@ -66,17 +66,6 @@ public String newExpense(Model model) { // method
 @PostMapping("/saveexpense")
 public String saveexpense(ExpenseBean expenseBean,HttpServletRequest request) {
 	System.out.println(expenseBean.getTitle());
-	System.out.println(expenseBean.getUserId());
-	System.out.println(expenseBean.getCategoryId());
-	System.out.println(expenseBean.getSubCategoryId());
-	System.out.println(expenseBean.getVendorId());
-	System.out.println(expenseBean.getAccountTypeId());
-	System.out.println(expenseBean.getStatusId());
-	System.out.println(expenseBean.getAmount());
-	System.out.println(expenseBean.getDate());
-	System.out.println(expenseBean.getDescription());
-	
-	//
 
 	// cookie name
    //  cookie userid 

@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Dashboard</title>
+<title>User Dashboard</title>
+</head>
+<body>
+
 <jsp:include page="AllCss.jsp"></jsp:include>
 
 <!--<h2>Admin Dashboard</h2>
@@ -32,8 +35,8 @@
  
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
    
   <main id="main" class="main">
 
@@ -55,7 +58,7 @@
           <div class="row">
 
             <!-- Sales Card -->
-            <div class="col-xxl-3 col-md-6">
+            <!-- <div class="col-xxl-3 col-md-6">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -87,7 +90,7 @@
                 </div>
 
               </div>
-            </div><!-- End Sales Card -->
+            </div>--><!-- End Sales Card -->
 
             <!-- Revenue Card -->
             <div class="col-xxl-3 col-md-6">
@@ -160,7 +163,7 @@
             </div><!-- End Revenue Card -->
             
             <!-- Customers Card -->
-            <div class="col-xxl-3 col-xl-6">
+            <!-- <div class="col-xxl-3 col-xl-6">
 
               <div class="card info-card customers-card">
 
@@ -194,7 +197,7 @@
                 </div>
               </div>
 
-            </div><!-- End Customers Card -->
+            </div>--><!-- End Customers Card -->
 
             <!-- Reports -->
             <div class="col-12">

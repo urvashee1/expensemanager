@@ -58,25 +58,11 @@
                   <input type="text" class="form-control" id="inputName5" name="password">
                 </div>
                  <div class="col-12">
-                  <label for="inputName5" class="form-label">CreatedAt</label>
-                  <input type="text" class="form-control" id="inputName5" name="createdAt">
-                </div>
-                 <div class="col-12">
-                  <label for="inputName5" class="form-label">Active</label>
-                  <input type="text" class="form-control" id="inputName5" name="active">
-                </div>
-                 <div class="col-12">
                   <label for="inputName5" class="form-label">ContactNo</label>
                   <input type="text" class="form-control" id="inputName5" name="contactNo">
                 </div>
-                 <div class="col-12">
-                  <label for="inputName5" class="form-label">Role</label>
-                  <input type="text" class="form-control" id="inputName5" name="role">
-                </div>
-                 <div class="col-12">
-                  <label for="inputName5" class="form-label">Otp</label>
-                  <input type="text" class="form-control" id="inputName5" name="otp">
-                </div>
+                
+                
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save User</button>
                   <button type="reset" class="btn btn-secondary">Cancel</button>

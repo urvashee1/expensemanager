@@ -86,7 +86,7 @@ public String authentication(LoginBean login, Model model,HttpServletResponse re
 			}
 	        else if(userBean.getRole()== 2){
 	        	//buyer
-	        	return "redirect:/home";
+	        	return "redirect:/userdashboard";
 	        }else {
 	        	//vaild
 	        	return "404";
@@ -151,5 +151,9 @@ public String listUser(Model model) {
 	List<UserBean>listUser=userDao.getAllUser();
 	model.addAttribute("listUser",listUser);
 	return "ListUser";
+}
+@GetMapping("/newuser")
+public String newuser() {
+	return "User";
 }
 }

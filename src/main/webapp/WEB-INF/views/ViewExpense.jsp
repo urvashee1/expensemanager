@@ -9,8 +9,8 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 
 <main id="main" class="main">
 <div class="pagetitle">

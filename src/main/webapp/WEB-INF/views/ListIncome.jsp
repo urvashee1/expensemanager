@@ -10,8 +10,8 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 <%  
  List<IncomeBean> list =(List<IncomeBean>) request.getAttribute("listIncome");
 %>
@@ -43,6 +43,7 @@
                   <!--<th>UserId</th>-->
                   <!--<th>AccountTypeId</th>-->
                   <!--<th>StatusId</th>-->
+                   <th>Amount</th>
                   <th>Date</th>
                   <th>Description</th>
                   <!--<th>FirstName</th>-->
@@ -60,6 +61,7 @@
 	    <!--<td><%=sb.getUserId()%></td>-->
 		<!--<td><%=sb.getAccountTypeId()%></td>-->
 		<!--<td><%=sb.getStatusId()%></td>-->
+		<td><%=sb.getAmount()%></td>
 		<td><%=sb.getDate()%></td>
 		<td><%=sb.getDescription()%></td>
 		<!--<td><%=sb.getFirstName()%></td>-->
@@ -67,16 +69,16 @@
 		<!--<td><%=sb.getStatus()%></td>-->
 		<td><%=sb.getDeleted()%></td>
 		 <td>
-		<a class="btn btn-info">Edit</a> 
-		<a class="btn btn-danger" href="deleteincome/<%=sb.getIncomeId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a> 
-		<a class="btn btn-dark" href="viewincome?incomeId=<%=sb.getIncomeId()%>">View</a></td>
+		<a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a> 
+		<a href="deleteincome/<%=sb.getIncomeId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a> 
+		<a href="viewincome?incomeId=<%=sb.getIncomeId()%>" style="color:black;"><i class="bi bi-eye" style="font-size:20px;"></i></a></td>
 	    </tr>
 	    <%} %>
         </tbody>
         </table>
               </div>
           
-        <a href="newincome"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+        <a href="newincome" style="color:black;"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
               
 </div>
           </div>

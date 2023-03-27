@@ -12,7 +12,7 @@ private Integer vendorId;
 private Integer accountTypeId;
 private Integer statusId;
 private Integer amount;
-private boolean deleted;
+private Boolean deleted;
 private String firstName;
 private String categoryName;
 private String subCategoryName;
@@ -85,10 +85,10 @@ public Integer getAmount() {
 public void setAmount(Integer amount) {
 	this.amount = amount;
 }
-public boolean getDeleted() {
+public Boolean getDeleted() {
 	return deleted;
 }
-public void setDeleted(boolean deleted) {
+public void setDeleted(Boolean deleted) {
 	this.deleted = deleted;
 }
 public String getFirstName() {

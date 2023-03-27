@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 <%  
  List<ExpenseBean> list =(List<ExpenseBean>) request.getAttribute("listExpense");
 %>
@@ -81,15 +81,15 @@
 		<td><%=sb.getDescription()%></td>
 		<td><%=sb.getDeleted()%></td>
 		<td>
-		<a class="btn btn-info">Edit</a> 
-		<a class="btn btn-danger" href="deleteexpense/<%=sb.getExpenseId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a>
-		<a class="btn btn-dark" href="viewexpense?expenseId=<%=sb.getExpenseId()%>">View</a></td>
+		<a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a> 
+		<a href="deleteexpense/<%=sb.getExpenseId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a>
+		<a href="viewexpense?expenseId=<%=sb.getExpenseId()%>" style="color:black;"><i class="bi bi-eye" style="font-size:20px;"></i></a></td>
 		</tr>
 	    <%} %>
                   </tbody>
               </table>
               </div>
-          <a href="newexpense"><div style="margin-left:1090px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+          <a href="newexpense" style="color:black;"><div style="margin-left:1090px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
               
 </div>
           </div>

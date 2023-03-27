@@ -53,7 +53,7 @@ VendorName:<input type="text" name="vendorName"><br><br>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Vendor</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                   <a type="button" href="listvendor" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
               <a href="listvendor">List Vendor</a>

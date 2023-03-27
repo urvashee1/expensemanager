@@ -14,8 +14,8 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 <%
 List<CategoryBean> list1=(List<CategoryBean>) request.getAttribute("list1");
 %>
@@ -80,7 +80,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                  </select>
                 </div>
              <div class="col-12">
-                  <label for="inputState" class="form-label">Vendor</label>
+             <label for="inputState" class="form-label">Vendor</label>
                   <select id="inputState" class="form-select" name="vendorId">
                   <%
                 for(VendorBean cb : list3){
@@ -132,7 +132,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Expense</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                  <a type="button" href="listexpense" class="btn btn-secondary">Cancel</a>
                 </div>
                  
               </form><!-- End Multi Columns Form -->

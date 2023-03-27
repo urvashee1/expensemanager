@@ -6,10 +6,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View Income</title>
+<jsp:include page="AllCss.jsp"/>
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 
 <main id="main" class="main">
 <div class="pagetitle">
@@ -50,6 +51,10 @@ IncomeBean incomeBean=(IncomeBean)request.getAttribute("incomeBean");
 <div class="row">
 <div class="col-lg-3 col-md-4 label"><b>StatusId</b></div>
 <div class="col-lg-9 col-md-8"><%=incomeBean.getStatusId()%></div> 
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-4 label"><b>Amount</b></div>
+<div class="col-lg-9 col-md-8"><%=incomeBean.getAmount()%></div> 
 </div>
 <div class="row">
 <div class="col-lg-3 col-md-4 label"><b>Date</b></div>

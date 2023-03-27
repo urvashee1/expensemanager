@@ -42,7 +42,7 @@
               <i class="bi bi-circle"></i><span>Status</span>
             </a>
           </li>
-           <li>
+           <!-- <li>
             <a href="newexpense">
               <i class="bi bi-circle"></i><span>Expense</span>
             </a>
@@ -51,7 +51,7 @@
             <a href="newincome">
               <i class="bi bi-circle"></i><span>Income</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </li><!-- End Forms Nav -->
 
@@ -91,7 +91,7 @@
               <i class="bi bi-circle"></i><span>List Status</span>
             </a>
           </li>
-           <li>
+           <!-- <li>
             <a href="listexpense">
               <i class="bi bi-circle"></i><span>List Expense</span>
             </a>
@@ -100,7 +100,7 @@
             <a href="listincome">
               <i class="bi bi-circle"></i><span>List Income</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </li><!-- End Tables Nav -->
  </ul>

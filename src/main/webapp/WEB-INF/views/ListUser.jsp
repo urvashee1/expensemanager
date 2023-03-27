@@ -59,15 +59,14 @@
 		          <td><%=sb.getPassword()%></td>
 		          <td><%=sb.getOtp()%></td>
 		          <td>
-		          <a class="btn btn-info">Edit</a>
-		          <a class="btn btn-danger" href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a>
-		          </td>
+		          <a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
+		          <a href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a></td>
                     </tr>
                   <%} %>
                   </tbody>
               </table>
               </div>
-        <a href="signup"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+        <a href="signup" style="color:black;"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
         </div> 
 </div>
             </div>

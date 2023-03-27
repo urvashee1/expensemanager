@@ -50,15 +50,14 @@
 		       <td><%=cb.getStatus()%></td>
 	       	   <td><%=cb.getDeleted()%></td>
 	       	   <td>
-	       	   <a class="btn btn-info">Edit</a> 
-                 <a class="btn btn-danger" href="deletecategory/<%=cb.getStatusId()%>" onclick="return confirm('Are you sure want to delete this record?')">Delete</a>
-                 </td>
+	       	   <a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a> 
+                 <a href="deletestatus/<%=cb.getStatusId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a></td>
 	           </tr>
 	           <%} %>
                   </tbody>
               </table>
               </div>
-                      <a href="newstatus"><div style="margin-left:1090px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+                      <a href="newstatus" style="color:black;"><div style="margin-left:1090px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
               
 </div>
           </div>

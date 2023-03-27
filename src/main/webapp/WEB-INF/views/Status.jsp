@@ -53,7 +53,7 @@ Status:<input type="text" name="status"><br><br>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Status</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                   <a type="button" href="liststatus" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
 <a href="liststatus">List Status</a>

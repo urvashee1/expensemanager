@@ -12,6 +12,7 @@ private Boolean deleted;
 private String firstName;
 private String accountType;
 private String status;
+private Integer amount;
 public Integer getIncomeId() {
 	return incomeId;
 }
@@ -77,5 +78,11 @@ public String getStatus() {
 }
 public void setStatus(String status) {
 	this.status = status;
+}
+public Integer getAmount() {
+	return amount;
+}
+public void setAmount(Integer amount) {
+	this.amount = amount;
 }
 }

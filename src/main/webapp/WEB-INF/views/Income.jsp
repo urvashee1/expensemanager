@@ -11,8 +11,8 @@
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="AdminHeader.jsp"></jsp:include>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
+<jsp:include page="UserSideBar.jsp"></jsp:include>
 <%
 List<AccountTypeBean> list1=(List<AccountTypeBean>) request.getAttribute("list1");
 %>
@@ -71,6 +71,10 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
           
+                  <div class="col-12">
+                  <label for="inputName5" class="form-label">Amount</label>
+                  <input type="text" class="form-control" id="inputName5" name="amount">
+                </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Date</label>
                   <input type="date" class="form-control" id="inputName5" name="date">
@@ -81,7 +85,7 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Income</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                  <a type="button" href="listincome" class="btn btn-secondary">Cancel</a>
                 </div>
                 
               </form><!-- End Multi Columns Form -->

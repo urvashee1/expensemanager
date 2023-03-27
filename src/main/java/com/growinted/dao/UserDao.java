@@ -19,9 +19,9 @@ public class UserDao {
 JdbcTemplate stmt;
 //add customer --signup
 public void insertUser(UserBean userBean) {
-	String insertQuery="insert into users (firstName,lastName,email,password,role) values (?,?,?,?,?)";
+	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,createdAt,contactNo,active) values (?,?,?,?,?,?,?,?,?,?)";
 	//role -> 2 for customer/buyer/user
-	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2); //query execute
+	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getCreatedAt(),userBean.getContactNo(),false); //query execute
 }
 public UserBean authenticateUser(LoginBean loginBean) {
 	try{

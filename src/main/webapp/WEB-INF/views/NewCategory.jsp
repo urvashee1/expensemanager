@@ -39,7 +39,7 @@
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Category</button>
-                  <button type="reset" class="btn btn-secondary">Cancel</button>
+                   <a type="button" href="listcategories" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
 <a href="listcategories">List Category</a>
