@@ -57,7 +57,7 @@
 		<td><%=cb.getCategoryName()%></td>
 		<td><%=cb.isDeleted()%></td>
 		<td>
-		<a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
+		<a href="editsubcategory?subcategoryId=<%=cb.getSubCategoryId()%>" style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
 		<a href="deletesubcategory/<%=cb.getSubCategoryId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a></td> 
 	           </tr>
 	           <%} %>

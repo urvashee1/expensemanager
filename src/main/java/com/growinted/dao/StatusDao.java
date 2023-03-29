@@ -2,11 +2,11 @@ package com.growinted.dao;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 
 import com.growinted.bean.StatusBean;
 @Repository
@@ -35,4 +35,20 @@ public void deleteStatus(Integer statusId) {
 	String updateQuery="update status set deleted = true where statusId =?";
 	stmt.update(updateQuery,statusId);
 }
+public void updateStatus(StatusBean statusBean) {
+	String updateQuery="update status set status=? where statusId=?";
+    stmt.update(updateQuery,statusBean.getStatus(),statusBean.getStatusId());
+}
+public StatusBean getStatusById(Integer statusId) {
+	StatusBean statusBean =null;
+	try {
+		statusBean=stmt.queryForObject("select * from status where statusId=?",new BeanPropertyRowMapper<StatusBean>(StatusBean.class),new Object[] { statusId});
+		}
+	catch(Exception e) {
+		System.out.println("StatusDao :: getStatusById()");
+        System.out.println(e.getMessage());
+	}
+return statusBean;
+}
+
 }

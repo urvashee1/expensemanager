@@ -2,6 +2,7 @@ package com.growinted.dao;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,5 +35,20 @@ public List<VendorBean> getAllVendor() {
 public void deleteVendor(Integer vendorId) {
 	String updateQuery="update vendor set deleted = true where vendorId =?";
 	stmt.update(updateQuery,vendorId);
+}
+public void updateVendor(VendorBean vendorBean) {
+	String updateQuery="update vendor set vendorName=? where vendorId=?";
+    stmt.update(updateQuery,vendorBean.getVendorName(),vendorBean.getVendorId());
+}
+public VendorBean getVendorById(Integer vendorId) {
+	VendorBean vendorBean =null;
+	try {
+		vendorBean=stmt.queryForObject("select * from vendor where vendorId=?",new BeanPropertyRowMapper<VendorBean>(VendorBean.class),new Object[] { vendorId});
+		}
+	catch(Exception e) {
+		System.out.println("VendorDao :: getVendorById()");
+        System.out.println(e.getMessage());
+	}
+return vendorBean;
 }
 }

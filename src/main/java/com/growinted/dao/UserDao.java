@@ -1,6 +1,8 @@
 package com.growinted.dao;
 
+import java.util.Calendar;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.growinted.bean.AccountTypeBean;
 import com.growinted.bean.ForgetPasswordBean;
 import com.growinted.bean.LoginBean;
 import com.growinted.bean.UpdatePasswordBean;
@@ -19,9 +22,29 @@ public class UserDao {
 JdbcTemplate stmt;
 //add customer --signup
 public void insertUser(UserBean userBean) {
-	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,createdAt,contactNo,active) values (?,?,?,?,?,?,?,?,?,?)";
+	Calendar c=Calendar.getInstance();
+	int d=c.get(c.DAY_OF_MONTH);//07
+	int m=c.get(c.MONTH)+1;//03
+	String mon="";
+	String dt="";
+	if(m<=9) {
+		mon=0 + "" +m;
+		}
+	else {
+		mon=m+ "";
+		}
+	if(d<=9) {
+		dt=0 + "";
+	}
+	else {
+		dt=d+ "";
+	}
+	int y=c.get(c.YEAR);
+	String today=y+ "-" + mon + "-" +dt;
+	System.out.println(today);
+	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active) values (?,?,?,?,?,?,?,?,?,?)";
 	//role -> 2 for customer/buyer/user
-	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getCreatedAt(),userBean.getContactNo(),false); //query execute
+	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getContactNo(),today,false); //query execute
 }
 public UserBean authenticateUser(LoginBean loginBean) {
 	try{
@@ -88,5 +111,16 @@ public UserBean getUserByEmail(String email) {
 		System.out.println(e.getMessage());
 	}
     return null;
+}
+public UserBean getUserById(Integer userId) {
+	UserBean userBean =null;
+	try {
+		userBean=stmt.queryForObject("select * from users where userId=?",new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { userId});
+		}
+	catch(Exception e) {
+		System.out.println("UserDao :: getUserById()");
+        System.out.println(e.getMessage());
+	}
+	return userBean;
 }
 }

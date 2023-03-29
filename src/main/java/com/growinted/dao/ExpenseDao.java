@@ -2,6 +2,7 @@ package com.growinted.dao;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,6 +44,10 @@ public ExpenseBean getExpenseById(Integer expenseId) {
         System.out.println(e.getMessage());
 	}
     return expenseBean;
+}
+public void updateExpense(ExpenseBean expenseBean) {
+	String updateQuery="update expense set title=? where expenseId=?";
+    stmt.update(updateQuery,expenseBean.getCategoryName(),expenseBean.getCategoryId());
 }
 }
 

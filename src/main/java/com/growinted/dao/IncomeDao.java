@@ -2,6 +2,7 @@ package com.growinted.dao;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,5 +44,9 @@ public class IncomeDao {
 	        System.out.println(e.getMessage());
 		}
 	    return incomeBean;
+	}
+	public void updateIncome(IncomeBean incomeBean) {
+		String updateQuery="update income set title=? where incomeId=?";
+	    stmt.update(updateQuery,incomeBean.getTitle(),incomeBean.getIncomeId());
 	}
 }

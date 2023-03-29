@@ -1,6 +1,7 @@
 package com.growinted.controller;
 import java.util.List;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,8 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.ForgetPasswordBean;
 import com.growinted.bean.LoginBean;
@@ -155,5 +157,16 @@ public String listUser(Model model) {
 @GetMapping("/newuser")
 public String newuser() {
 	return "User";
+}
+@GetMapping("/viewuser")
+public String viewUserById(@RequestParam("userId") Integer userId,Model model) {
+	UserBean userBean = userDao.getUserById(userId);
+	model.addAttribute("userBean",userBean);
+	return "ViewUser";
+}
+@GetMapping("/deleteuser/{userId}/{currentstatus}")
+public String deleteUser(@PathVariable("userId") Integer userId,@PathVariable("currentStatus")boolean currentStatus){
+
+	return "redirect:/listuser";
 }
 }

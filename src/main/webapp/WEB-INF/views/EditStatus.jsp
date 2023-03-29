@@ -19,13 +19,8 @@ Status:<input type="text" name="status"><br><br>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Status</title>
+<title>Edit Status</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -38,7 +33,7 @@ Status:<input type="text" name="status"><br><br>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Status</li>
+          <li class="breadcrumb-item active">Edit Status</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -48,17 +43,17 @@ Status:<input type="text" name="status"><br><br>
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Status</h5>
+              <h5 class="card-title">Edit Status</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="savestatus" method="post" id="myform">
+              <form class="row g-3" action="updatestatus" method="post">
+              <input type="hidden" name="statusId" value="${statusBean.statusId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Status</label>
-                  <input type="text" class="form-control" id="status" name="status">
-                  <span id="statusError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="status" value="${statusBean.status}">
                 </div>
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Status" onclick="validation()" />
+                  <button type="submit" class="btn btn-primary" >Update Status</button>
                    <a type="button" href="liststatus" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
@@ -71,36 +66,10 @@ Status:<input type="text" name="status"><br><br>
 </main>
 	<jsp:include page="AdminFooter.jsp"></jsp:include>
 	<jsp:include page="AllJs.jsp"></jsp:include>
-	
-	<script type="text/javascript">
-		function validation() {
-			isError = false;
-			status = document.getElementById("status");
-			statusError = document.getElementById("statusError");
-			statusRegex = /^[a-zA-Z]+$/;
-			
-			if (status.value == '') {
-				statusError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (statusRegex.test(status.value) == false) {
-					statusError.innerHTML = "Please Enter Valid Status";
-					isError = true;
-				} else {
-					statusError.innerHTML = "";
-
-				}
-			}
-			if (isError == false) {
-				myform = document.getElementById("myform");
-				myform.submit();
-			}
-		}
-</script>
-	
 </body>
 </html>
 
 
 
 
+    

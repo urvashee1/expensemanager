@@ -6,13 +6,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New Sub Category</title>
+<title>Edit Sub Category</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -28,7 +23,7 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Sub Category</li>
+          <li class="breadcrumb-item active">Edit Sub Category</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -38,30 +33,29 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Sub Category</h5>
+              <h5 class="card-title">Edit Sub Category</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="savesubcategory" method="post" id="myform">
+              <form class="row g-3" action="updatesubcategory" method="post">
+              <input type="hidden" name="subCategoryId" value="${subcategoryBean.subCategoryId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">SubCategoryName</label>
-                  <input type="text" class="form-control" id="subCategoryName" name="subCategoryName">
-                  <span id="subCategoryNameError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="subCategoryName" value="${subcategoryBean.subCategoryName}">
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Category</label>
-                  <select id="inputState" class="form-select" name="categoryId">
+                  <select id="inputState" class="form-select" name="categoryId" value="${subcategoryBean.categoryId}">
                   <%
                 for(CategoryBean cb : list){
                 %>
                     <option value="<%=cb.getCategoryId()%>"><%=cb.getCategoryName()%></option><% } %>
                   
                   </select>
-                  <span id="categoryIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Sub Category" onclick="validation()"/>
+                  <button type="submit" class="btn btn-primary" >Update Sub Category</button>
                   <a type="button" href="listsubcategories" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
@@ -90,32 +84,6 @@ for(CategoryBean cb : list){
 </form>-->
 <jsp:include page="AdminFooter.jsp"></jsp:include>
 <jsp:include page="AllJs.jsp"></jsp:include>
-
-<script type="text/javascript">
-		function validation() {
-			isError = false;
-			subCategoryName = document.getElementById("subCategoryName");
-			subCategoryNameError = document.getElementById("subCategoryNameError");
-			subCategoryNameRegex = /^[a-zA-Z]+$/;
-			
-			if (subCategoryName.value == '') {
-				subCategoryNameError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (subCategoryNameRegex.test(subCategoryName.value) == false) {
-					subCategoryNameError.innerHTML = "Please Enter Valid SubCategoryName";
-					isError = true;
-				} else {
-					subCategoryNameError.innerHTML = "";
-
-				}
-			}
-			if (isError == false) {
-				myform = document.getElementById("myform");
-				myform.submit();
-			}
-		}
-</script>
 </body>
 </html>
 

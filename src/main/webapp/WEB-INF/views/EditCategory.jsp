@@ -1,17 +1,11 @@
-<%@page import="org.springframework.ui.Model"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Category</title>
+<title>Edit Category</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -24,7 +18,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Category</li>
+          <li class="breadcrumb-item active">Edit Category</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -34,17 +28,17 @@
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Category</h5>
+              <h5 class="card-title">Edit Category</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="savecategory" method="post" id="myform">
+              <form class="row g-3" action="updatecategory" method="post">
+              <input type="hidden" name="categoryId" value="${categoryBean.categoryId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Category Name</label>
-                  <input type="text" class="form-control"  name="categoryName" id="categoryName">
-                  <span id="categoryNameError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="categoryName" value="${categoryBean.categoryName}">
                 </div>
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Category" onclick="validation()"/>
+                  <button type="submit" class="btn btn-primary" >Update Category</button>
                    <a type="button" href="listcategories" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
@@ -57,35 +51,5 @@
 </main>
 	<jsp:include page="AdminFooter.jsp"></jsp:include>
 	<jsp:include page="AllJs.jsp"></jsp:include>
-	<script type="text/javascript">
-		function validation() {
-			isError = false;
-			categoryName = document.getElementById("categoryName");
-			categoryNameError = document.getElementById("categoryNameError");
-			categoryNameRegex = /^[a-zA-Z]+$/;
-			
-			if (categoryName.value == '') {
-				categoryNameError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (categoryNameRegex.test(categoryName.value) == false) {
-					categoryNameError.innerHTML = "Please Enter Valid CategoryName";
-					isError = true;
-				} else {
-					categoryNameError.innerHTML = "";
-
-				}
-			}
-				if (isError == false) {
-					myform = document.getElementById("myform");
-					myform.submit();
-				}
-			}
-			
-</script>
 </body>
 </html>
-
-
-
-

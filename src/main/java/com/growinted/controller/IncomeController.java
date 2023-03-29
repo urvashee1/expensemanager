@@ -2,6 +2,7 @@ package com.growinted.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -79,5 +80,16 @@ public String viewIncomeById(@RequestParam("incomeId") Integer incomeId,Model mo
 	IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
 	model.addAttribute("incomeBean",incomeBean);
 	return "ViewIncome";
+}
+@GetMapping("/editincome")
+public String editIncome(@RequestParam("incomeId") Integer incomeId,Model model) {
+	IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
+	model.addAttribute("incomeBean",incomeBean);
+	return "EditIncome";
+}
+@PostMapping("/updateincome")
+public String updateIncome(IncomeBean incomeBean) {
+	incomeDao.updateIncome(incomeBean);
+	return "redirect:/listincome";
 }
 }

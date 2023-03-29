@@ -2,6 +2,7 @@ package com.growinted.dao;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,6 +41,20 @@ public class AccountTypeDao {
 	// update
 
 	// delete
-
+	public void updateAccountType(AccountTypeBean accounttypeBean) {
+		String updateQuery="update accounttype set accountType=? where accountTypeId=?";
+	    stmt.update(updateQuery,accounttypeBean.getAccountType(),accounttypeBean.getAccountTypeId());
+	}
+	public AccountTypeBean getAccountTypeById(Integer accounttypeId) {
+		AccountTypeBean accounttypeBean =null;
+		try {
+			accounttypeBean=stmt.queryForObject("select * from accounttype where accounttypeId=?",new BeanPropertyRowMapper<AccountTypeBean>(AccountTypeBean.class),new Object[] { accounttypeId});
+			}
+		catch(Exception e) {
+			System.out.println("AccountTypeDao :: getAccountTypeById()");
+	        System.out.println(e.getMessage());
+		}
+	return accounttypeBean;
+	}
 }
 

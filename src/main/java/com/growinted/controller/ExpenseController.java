@@ -106,5 +106,16 @@ public String viewExpenseById(@RequestParam("expenseId") Integer expenseId,Model
 	model.addAttribute("expenseBean",expenseBean);
 	return "ViewExpense";
 }
+@GetMapping("/editexpense")
+public String editExpense(@RequestParam("expenseId") Integer expenseId,Model model) {
+    ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+	model.addAttribute("expenseBean",expenseBean);
+	return "EditExpense";
+}
+@PostMapping("/updateexpense")
+public String updateExpense(ExpenseBean expenseBean) {
+	expenseDao.updateExpense(expenseBean);
+	return "redirect:/listexpense";
+}
 }
 

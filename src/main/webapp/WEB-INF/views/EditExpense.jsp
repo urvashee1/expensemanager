@@ -10,13 +10,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense</title>
+<title>Edit Expense</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="UserHeader.jsp"></jsp:include>
@@ -44,7 +39,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Expense</li>
+          <li class="breadcrumb-item active">Edit Expense</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -54,18 +49,18 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Expense</h5>
+              <h5 class="card-title">Edit Expense</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="saveexpense" method="post" id="myform">
+              <form class="row g-3" action="updateexpense" method="post">
+              <input type="hidden" name="expenseId" value="${expenseBean.expenseId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-                   <span id="titleError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="title" value="${expenseBean.title}">
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Category</label>
-                  <select id="inputState" class="form-select" name="categoryId">
+                  <select id="inputState" class="form-select" name="categoryId" value="${expenseBean.categoryId}">
                   <%
                 for(CategoryBean cb : list1){
                 %>
@@ -78,7 +73,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                
               <div class="col-12">
                   <label for="inputState" class="form-label">Sub Category</label>
-                  <select id="inputState" class="form-select" name="subCategoryId">
+                  <select id="inputState" class="form-select" name="subCategoryId" value="${expenseBean.subCategoryId}">
                   <%
                   for(SubCategoryBean cb : list2){
                   %>
@@ -87,7 +82,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 </div>
              <div class="col-12">
              <label for="inputState" class="form-label">Vendor</label>
-                  <select id="inputState" class="form-select" name="vendorId">
+                  <select id="inputState" class="form-select" name="vendorId" value="${expenseBean.VendorId}">
                   <%
                 for(VendorBean cb : list3){
                 %>
@@ -100,7 +95,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 
                 <div class="col-12">
                   <label for="inputState" class="form-label">Account Type</label>
-                  <select id="inputState" class="form-select" name="accountTypeId">
+                  <select id="inputState" class="form-select" name="accountTypeId" value="${expenseBean.accountTypeId}">
                   <%
                 for(AccountTypeBean cb : list4){
                 %>
@@ -113,7 +108,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 
                 <div class="col-12">
                   <label for="inputState" class="form-label">Status</label>
-                  <select id="inputState" class="form-select" name="statusId">
+                  <select id="inputState" class="form-select" name="statusId" value="${expenseBean.statusId}">
                   <%
                 for(StatusBean cb : list5){
                 %>
@@ -126,21 +121,18 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 
                <div class="col-12">
                   <label for="inputName5" class="form-label">Amount</label>
-                  <input type="text" class="form-control" id="amount" name="amount">
-                   <span id="amountError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="amount" value="${expenseBean.amount}">
                 </div>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="date" name="date">
-                   <span id="dateError" class="error"></span>
+                  <input type="date" class="form-control" id="inputName5" name="date" value="${expenseBean.date}">
                 </div>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="description" name="description">
-                   <span id="descriptionError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="description" value="${expenseBean.description}">
                 </div>
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Expense" onclick="validation()"/>
+                  <button type="submit" class="btn btn-primary" >Update Expense</button>
                   <a type="button" href="listexpense" class="btn btn-secondary">Cancel</a>
                 </div>
                  
@@ -154,49 +146,6 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 </main>
 <jsp:include page="AdminFooter.jsp"></jsp:include>
 <jsp:include page="AllJs.jsp"></jsp:include>
-              
-        <script type="text/javascript">
-		function validation() {
-			isError = false;
-			title = document.getElementById("title");
-			titleError = document.getElementById("titleError");
-			titleRegex = /^[a-zA-Z]+$/;
-			
-			description = document.getElementById("description");
-			descriptionError = document.getElementById("descriptionError");
-			descriptionRegex = /^[a-zA-Z]+$/;
-			
-			if (title.value == '') {
-				titleError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (titleRegex.test(title.value) == false) {
-					titleError.innerHTML = "Please Enter Valid Title";
-					isError = true;
-				} else {
-					titleError.innerHTML = "";
-
-				}
-			}
-			
-			if (description.value == '') {
-				descriptionError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (descriptionRegex.test(description.value) == false) {
-					descriptionError.innerHTML = "Please Enter Valid Description";
-					isError = true;
-				} else {
-					descriptionError.innerHTML = "";
-
-				}
-			}
-			if (isError == false) {
-				myform = document.getElementById("myform");
-				myform.submit();
-			}
-		}
-</script>
               
 </body>
 </html>

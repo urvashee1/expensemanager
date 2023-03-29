@@ -6,12 +6,15 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+      
+      
+      <!--<li class="nav-heading">Pages</li>
+      <li class=nav-item"><a class="nav-link collapsed" href="listcategories"><i class="bi bi-person"></i><span>Category</span></a></li>-->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
          <li>
             <a href="newuser">
               <i class="bi bi-circle"></i><span>User</span>
@@ -91,7 +94,7 @@
               <i class="bi bi-circle"></i><span>List Status</span>
             </a>
           </li>
-           <!-- <li>
+          <!--<li>
             <a href="listexpense">
               <i class="bi bi-circle"></i><span>List Expense</span>
             </a>

@@ -11,7 +11,7 @@ public class AdminDao {
    JdbcTemplate stmt;
 	public Integer getTotalExpenseCountForCurrentDate() {
 
-			String countQuery = "select count(*) from expense where date = ?";
+			String countQuery = "select count(*) from expense where date like ?";
 
 			// dd-mm-yyyy
 
@@ -24,9 +24,9 @@ public class AdminDao {
 			String today = "";
 
 			if (mmm < 10) {
-				today = yyy + "-0" + mmm + "-" + ddd;
+				today = yyy + "-0" + mmm  + "-%" ;
 			} else {
-				today = yyy + "-" + mmm + "-" + ddd;
+				today = yyy + "-" + mmm + "-%" ;
 			}
 			System.out.println("TODAY => " + today);
 
@@ -53,7 +53,7 @@ public class AdminDao {
 
 		public Integer getSumOfExpenseAmountForCurrentDate() {
 
-			String countQuery = "select sum(Amount) from expense where date=?";
+			String countQuery = "select sum(Amount) from expense where date like ?";
 			// dd-mm-yyyy
 
 			Calendar c = Calendar.getInstance();
@@ -65,9 +65,9 @@ public class AdminDao {
 			String today = "";
 
 			if (mmm < 10) {
-				today = yyy + "-0" + mmm + "-" + ddd;
+				today = yyy + "-0" + mmm +   "-%" ;
 			} else {
-				today = yyy + "-" + mmm + "-" + ddd;
+				today = yyy + "-" + mmm + "-%";
 			}
 			System.out.println("TODAY => " + today);
 
@@ -77,7 +77,7 @@ public class AdminDao {
 
 public Integer getSumOfIncomeAmountForCurrentDate() {
 
-	String countQuery = "select sum(Amount) from income where date=?";
+	String countQuery = "select sum(Amount) from income where date like ?";
 	// dd-mm-yyyy
 
 	Calendar c = Calendar.getInstance();
@@ -89,9 +89,9 @@ public Integer getSumOfIncomeAmountForCurrentDate() {
 	String today = "";
 
 	if (mmm < 10) {
-		today = yyy + "-0" + mmm + "-" + ddd;
+		today = yyy + "-0" + mmm + "-%";
 	} else {
-		today = yyy + "-" + mmm + "-" + ddd;
+		today = yyy + "-" + mmm + "-%";
 	}
 	System.out.println("TODAY => " + today);
 

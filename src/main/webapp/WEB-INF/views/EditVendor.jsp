@@ -19,13 +19,8 @@ VendorName:<input type="text" name="vendorName"><br><br>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Vendor</title>
+<title>Edit Vendor</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -38,7 +33,7 @@ VendorName:<input type="text" name="vendorName"><br><br>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Vendor</li>
+          <li class="breadcrumb-item active">Edit Vendor</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -48,17 +43,17 @@ VendorName:<input type="text" name="vendorName"><br><br>
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vendor</h5>
+              <h5 class="card-title">Edit Vendor</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="savevendor" method="post" id="myform">
+              <form class="row g-3" action="updatevendor" method="post">
+               <input type="hidden" name="vendorId" value="${vendorBean.vendorId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Vendor Name</label>
-                  <input type="text" class="form-control" id="vendorName" name="vendorName">
-                  <span id="vendorNameError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="vendorName" value="${vendorBean.vendorName}">
                 </div>
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Vendor" onclick="validation()"/>
+                  <button type="submit" class="btn btn-primary">Update Vendor</button>
                    <a type="button" href="listvendor" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Multi Columns Form -->
@@ -71,35 +66,10 @@ VendorName:<input type="text" name="vendorName"><br><br>
 </main>
 	<jsp:include page="AdminFooter.jsp"></jsp:include>
 	<jsp:include page="AllJs.jsp"></jsp:include>
-     
-     <script type="text/javascript">
-		function validation() {
-			isError = false;
-			vendorName = document.getElementById("vendorName");
-			vendorNameError = document.getElementById("vendorNameError");
-			vendorNameRegex = /^[a-zA-Z]+$/;
-			
-			if (vendorName.value == '') {
-				vendorNameError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (vendorNameRegex.test(svendorName.value) == false) {
-					vendorNameError.innerHTML = "Please Enter Valid VendorName";
-					isError = true;
-				} else {
-					vendorNameError.innerHTML = "";
-
-				}
-			}
-			if (isError == false) {
-				myform = document.getElementById("myform");
-				myform.submit();
-			}
-		}
-</script>
-     
 </body>
 </html>
+
+
 
 
 

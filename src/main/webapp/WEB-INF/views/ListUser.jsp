@@ -12,7 +12,6 @@
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
-
 <%  
  List<UserBean> list =(List<UserBean>) request.getAttribute("listUser");
 %>
@@ -44,7 +43,13 @@
                   <th>LastName</th>
                   <th>Email</th>
                   <th>Password</th>
-                  <th>Otp</th>
+                  <!--<th>Role</th>-->
+                  <!--<th>Otp</th>-->
+                  <!--<th>Gender</th>-->
+                  <!--<th>DOB</th>-->
+                  <!--<th>CreatedAt</th>-->
+                  <th>ContactNo</th>
+                  <th>Active</th>
                   <th>Action</th>
                     
                   </tr>
@@ -57,10 +62,23 @@
 		          <td><%=sb.getLastName()%></td>
 		          <td><%=sb.getEmail()%></td>
 		          <td><%=sb.getPassword()%></td>
-		          <td><%=sb.getOtp()%></td>
+		          <!--<td><%=sb.getRole()%></td>-->
+		          <!--<td><%=sb.getOtp()%></td>-->
+		          <!--<td><%=sb.getGender()%></td>-->
+		          <!--<td><%=sb.getDob()%></td>-->
+		          <!--<td><%=sb.getCreatedAt()%></td>-->
+		          <td><%=sb.getContactNo()%></td>
+		         
+		         <!-- <td>
+		          <div class="form-check form-switch">
+		          <input class="form-check-input" onclick="changeStatus(<%=sb.getUserId()%>,<%=sb.getDeleted()%>)" type="checkbox" id="flexSwitchCheckChecked" 
+		          <%=!sb.getDeleted()? "checked" : ""%>>
+		          </div>
+		          </td>-->
 		          <td>
 		          <a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
-		          <a href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a></td>
+		          <a href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a>
+                   <a href="viewuser?userId=<%=sb.getUserId()%>" style="color:black;"><i class="bi bi-eye" style="font-size:20px;"></i></a></td>
                     </tr>
                   <%} %>
                   </tbody>

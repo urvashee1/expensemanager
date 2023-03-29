@@ -25,6 +25,10 @@ public class AdminController{
 		model.addAttribute("totalUsers",totalUserCount);
 		return "AdminDashboard";
 	}	
+	@GetMapping("adminviewprofile")
+	public String adminviewprofile() {
+		return "AdminViewProfile";
+	}
 }
 
 

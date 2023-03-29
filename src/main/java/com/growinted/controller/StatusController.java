@@ -2,14 +2,13 @@ package com.growinted.controller;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.StatusBean;
 import com.growinted.dao.StatusDao;
@@ -19,7 +18,7 @@ public class StatusController {
 	StatusDao statusDao;
 
 @GetMapping("/newstatus")
-	public String newstatus() { // method
+	public String newStatus() { // method
 		return "Status";// jsp--open
 	}
 
@@ -41,4 +40,15 @@ public class StatusController {
 		statusDao.deleteStatus(statusId);
 		return "redirect:/liststatus";
 	}
+@GetMapping("/editstatus")
+public String editStatus(@RequestParam("statusId") Integer statusId,Model model) {
+	StatusBean statusBean = statusDao.getStatusById(statusId);
+	model.addAttribute("statusBean",statusBean);
+	return "EditStatus";
+}
+@PostMapping("/updatestatus")
+public String updateStatus(StatusBean statusBean) {
+	statusDao.updateStatus(statusBean);
+	return "redirect:/liststatus";
+}
 }

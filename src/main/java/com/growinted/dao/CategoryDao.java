@@ -52,6 +52,9 @@ return categoryBean;
 	// update
 
 	// delete
-
+public void updateCategory(CategoryBean categoryBean) {
+	String updateQuery="update category set categoryName=? where categoryId=?";
+    stmt.update(updateQuery,categoryBean.getCategoryName(),categoryBean.getCategoryId());
+}
 }
 

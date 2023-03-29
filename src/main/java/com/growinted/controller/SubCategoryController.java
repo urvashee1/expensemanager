@@ -5,12 +5,14 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.CategoryBean;
 import com.growinted.bean.SubCategoryBean;
@@ -51,4 +53,16 @@ public String deletesubCategory(@PathVariable("subCategoryId") Integer subCatego
 	subcategoryDao.deleteSubCategory(subCategoryId);
 	return "redirect:/listsubcategories";
 }
+@GetMapping("/editsubcategory")
+public String editsubCategory(@RequestParam("subcategoryId") Integer subcategoryId,Model model) {
+	SubCategoryBean subcategoryBean = subcategoryDao.getSubCategoryById(subcategoryId);
+	model.addAttribute("subcategoryBean",subcategoryBean);
+	return "EditSubCategory";
+}
+@PostMapping("/updatesubcategory")
+public String updateSubCategory(SubCategoryBean subcategoryBean) {
+	subcategoryDao.updateSubCategory(subcategoryBean);
+	return "redirect:/listsubcategories";
+}
+
 }

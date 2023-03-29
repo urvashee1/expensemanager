@@ -81,7 +81,7 @@
 		<td><%=sb.getDescription()%></td>
 		<td><%=sb.getDeleted()%></td>
 		<td>
-		<a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a> 
+		<a href="editexpense?expenseId=<%=sb.getExpenseId()%>" style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a> 
 		<a href="deleteexpense/<%=sb.getExpenseId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a>
 		<a href="viewexpense?expenseId=<%=sb.getExpenseId()%>" style="color:black;"><i class="bi bi-eye" style="font-size:20px;"></i></a></td>
 		</tr>

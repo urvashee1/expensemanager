@@ -13,6 +13,7 @@ private String dob;
 private String createdAt;
 private Boolean active;
 private String contactNo;
+private Boolean deleted;
 public Integer getUserId() {
 	return userId;
 }
@@ -84,6 +85,12 @@ public String getContactNo() {
 }
 public void setContactNo(String contactNo) {
 	this.contactNo = contactNo;
+}
+public Boolean getDeleted() {
+	return deleted;
+}
+public void setDeleted(Boolean deleted) {
+	this.deleted = deleted;
 }
 }
 

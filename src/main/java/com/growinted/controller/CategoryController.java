@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.growinted.bean.CategoryBean;
 import com.growinted.dao.CategoryDao;
@@ -70,7 +71,18 @@ public class CategoryController {
 		model.addAttribute("categoryBean",categoryBean);
 		return "ViewCategory";
 	}
+	
+	@GetMapping("/editcategory")
+	public String editCategory(@RequestParam("categoryId") Integer categoryId,Model model) {
+		CategoryBean categoryBean = categoryDao.getCategoryById(categoryId);
+		model.addAttribute("categoryBean",categoryBean);
+		return "EditCategory";
+    }
+	@PostMapping("/updatecategory")
+	public String updateCategory(CategoryBean categoryBean) {
+		categoryDao.updateCategory(categoryBean);
+		return "redirect:/listcategories";
+	}
 }
-
 
 

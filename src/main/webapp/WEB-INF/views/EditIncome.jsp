@@ -7,13 +7,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Income</title>
+<title>Edit Income</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 </head>
 <body>
 <jsp:include page="UserHeader.jsp"></jsp:include>
@@ -32,7 +27,7 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
           <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Income</li>
+          <li class="breadcrumb-item active">Edit Income</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -42,14 +37,14 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Income</h5>
+              <h5 class="card-title">Edit Income</h5>
 
               <!-- Multi Columns Form -->
-              <form class="row g-3" action="saveincome" method="post" id="myform">
+              <form class="row g-3" action="updateincome" method="post">
+              <input type="hidden" name="incomeId" value="${incomeBean.incomeId}"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-                  <span id="titleError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="title" value="${incomeBean.title}">
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Account Type</label>
@@ -87,11 +82,10 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                 </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="description" name="description">
-                  <span id="descriptionError" class="error"></span>
+                  <input type="text" class="form-control" id="inputName5" name="description">
                 </div>
                 <div class="text-center">
-                  <input type="button" class="btn btn-primary" value="Save Income" onclick="validation()"/>
+                  <button type="submit" class="btn btn-primary" >Save Income</button>
                   <a type="button" href="listincome" class="btn btn-secondary">Cancel</a>
                 </div>
                 
@@ -105,50 +99,6 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
         </main>
 <jsp:include page="AdminFooter.jsp"></jsp:include>
 <jsp:include page="AllJs.jsp"></jsp:include>
-
-<script type="text/javascript">
-		function validation() {
-			isError = false;
-			title = document.getElementById("title");
-			titleError = document.getElementById("titleError");
-			titleRegex = /^[a-zA-Z]+$/;
-			
-			description = document.getElementById("description");
-			descriptionError = document.getElementById("descriptionError");
-			descriptionRegex = /^[a-zA-Z]+$/;
-			
-			if (title.value == '') {
-				titleError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (titleRegex.test(title.value) == false) {
-					titleError.innerHTML = "Please Enter Valid Title";
-					isError = true;
-				} else {
-					titleError.innerHTML = "";
-
-				}
-			}
-			
-			if (description.value == '') {
-				descriptionError.innerHTML = "Please fill out this field.";
-				isError = true;
-			} else {
-				if (descriptionRegex.test(description.value) == false) {
-					descriptionError.innerHTML = "Please Enter Valid Description";
-					isError = true;
-				} else {
-					descriptionError.innerHTML = "";
-
-				}
-			}
-			if (isError == false) {
-				myform = document.getElementById("myform");
-				myform.submit();
-			}
-		}
-</script>
-
 </body>
 </html>
     
