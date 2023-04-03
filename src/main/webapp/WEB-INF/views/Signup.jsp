@@ -101,7 +101,7 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 
 									<form class="row g-3 needs-validation" novalidate action="saveuser" method="post" id="myform">
 										<div class="col-12">
-											<label for="yourName" class="form-label">FirstName</label> <input
+											<label for="yourName" class="form-label">First Name</label> <input
 												type="text" name="firstName" class="form-control"
 												id="firstName">
 											<!-- <div class="invalid-feedback">Please, enter your name!</div>
@@ -109,7 +109,7 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 											<span id="firstNameError" class="error"></span>
 										</div>
 										<div class="col-12">
-											<label for="yourName" class="form-label">LastName</label> 
+											<label for="yourName" class="form-label">Last Name</label> 
 											<input type="text" name="lastName" class="form-control"
 												id="lastName"> <span id="lastNameError"
 												class="error"></span>
@@ -127,15 +127,17 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 										<div class="col-12">
 											<label for="yourDOB" class="form-label">DOB</label> 
 											<input type="date" name="dob" class="form-control" id="dob">
+											<span id="dobError" class="error"></span>
 										</div>
 										<!-- <div class="col-12">
                     <label for="yourDOB" class="form-label">Date Of Creation</label>
                       <input type="date" name="createdAt" class="form-control" id="createdAt">
                      </div>-->
 										<div class="col-12">
-											<label for="contactNo" class="form-label">Contact No</label>
-											<input type="text" name="contactNo" class="form-control"
+											<label for="yourcontactNo" class="form-label">Contact No</label>
+											<input type="no" name="contactNo" class="form-control"
 												id="contactNo">
+												<span id="contactNoError" class="error"></span>
 										</div>
 										<div class="col-12">
 											<label for="yourPassword" class="form-label">Password</label>
@@ -213,6 +215,10 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 			email = document.getElementById("email")
 			emailError = document.getElementById("emailError");
 			emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]{2,3}$/;
+		
+			contactNo = document.getElementById("contactNo");
+			contactNoError = document.getElementById("contactNoError");
+			<!--contactNoRegex = /^[0-9]{10}/-->;
 
 			password = document.getElementById("password");
 			passwordError = document.getElementById("passwordError");
@@ -224,11 +230,11 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 			confirmPasswordRegex = /^[0-9]+$/;
 
 			if (firstName.value == '') {
-				firstNameError.innerHTML = "Please Enter FirstName";
+				firstNameError.innerHTML = "Please Enter First Name";
 				isError = true;
 			} else {
 				if (firstNameRegex.test(firstName.value) == false) {
-					firstNameError.innerHTML = "Please Enter Valid FirstName";
+					firstNameError.innerHTML = "Please Enter Valid First Name";
 					isError = true;
 				} else {
 					firstNameError.innerHTML = "";
@@ -236,11 +242,11 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 				}
 			}
 			if (lastName.value == '') {
-				lastNameError.innerHTML = "Please Enter LastName";
+				lastNameError.innerHTML = "Please Enter Last Name";
 				isError = true;
 			} else {
 				if (lastNameRegex.test(lastName.value) == false) {
-					lastNameError.innerHTML = "Please Enter Valid LastName";
+					lastNameError.innerHTML = "Please Enter Valid Last Name";
 					isError = true;
 				} else {
 					lastNameError.innerHTML = "";
@@ -258,7 +264,22 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 					emailError.innerHTML = "";
 				}
 			}
-
+			if (dob.value == '') {
+				dobError.innerHTML = "Please fill out this field.";
+				isError = true;
+			} 
+			if (contactNo.value == '') {
+				contactNoError.innerHTML = "Please Enter Contact NO";
+				isError = true;
+			} else {
+				if (contactNo.value.length != 10) {
+					contactNoError.innerHTML = "Please Enter Valid Contact No";
+					isError = true;
+				} else {
+					contactNoError.innerHTML = "";
+				}
+			}
+			
 			x = document.getElementsByName("gender");
 			if (!(x[0].checked || x[1].checked)) {
 				isError = true;
@@ -281,7 +302,7 @@ Confirm Password: <input type="password" name="confirmPassword"><br><br>
 				isError = true;
 			} else {
 				if (confirmPasswordRegex.test(confirmPassword.value) == false) {
-					confirmPasswordError.innerHTML = "Please Enter Valid Password";
+					confirmPasswordError.innerHTML = "Please Enter Valid Confirm Password";
 					isError = true;
 				} else {
 					confirmPasswordError.innerHTML = "";

@@ -1,9 +1,13 @@
 package com.growinted.dao;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.growinted.bean.ExpenseChartBean;
 
 @Repository
 public class AdminDao {
@@ -44,7 +48,7 @@ public class AdminDao {
 
 			int yyy = c.get(Calendar.YEAR);
 
-			String today = "%-" + yyy;// 2023
+			String today = "%-";// 2023
 
 			System.out.println("CURRENT YEAR => " + today);
 
@@ -97,6 +101,10 @@ public Integer getSumOfIncomeAmountForCurrentDate() {
 
 	return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
 
+}
+public List<ExpenseChartBean> getExpenseStatus(){
+	String selectQ="select monthname(date) as month, sum(amount) as amount from expense where year(date)=2023 group by monthname(date), month(date) order by month(date)";
+return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));
 }
 }
 

@@ -48,7 +48,7 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Account Type</label>
-                  <select id="inputState" class="form-select" name="accountTypeId">
+                  <select id="inputState" class="form-select" name="accountTypeId" value="${incomeBean.accountTypeId}">
                   <%
                 for(AccountTypeBean cb : list1){
                 %>
@@ -61,7 +61,7 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
               
                 <div class="col-12">
                   <label for="inputState" class="form-label">Status</label>
-                  <select id="inputState" class="form-select" name="statusId">
+                  <select id="inputState" class="form-select" name="statusId" value="${incomeBean.statusId}">
                   <%
                 for(StatusBean cb : list2){
                 %>
@@ -74,15 +74,15 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
           
                   <div class="col-12">
                   <label for="inputName5" class="form-label">Amount</label>
-                  <input type="text" class="form-control" id="inputName5" name="amount">
+                  <input type="text" class="form-control" id="inputName5" name="amount" value="${incomeBean.amount}">
                 </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="inputName5" name="date">
+                  <input type="date" class="form-control" id="inputName5" name="date" value="${incomeBean.date}">
                 </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="inputName5" name="description">
+                  <input type="text" class="form-control" id="inputName5" name="description" value="${incomeBean.description}">
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Income</button>

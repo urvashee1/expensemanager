@@ -65,68 +65,78 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Category</label>
-                  <select id="inputState" class="form-select" name="categoryId">
+                  <select id="categoryId" class="form-select" name="categoryId">
+                  <option value="-1">Select Category</option>
                   <%
                 for(CategoryBean cb : list1){
                 %>
                     <option value="<%=cb.getCategoryId()%>"><%=cb.getCategoryName()%></option><% } %>
                   
                   </select>
+                  <span id="categoryIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                
               <div class="col-12">
                   <label for="inputState" class="form-label">Sub Category</label>
-                  <select id="inputState" class="form-select" name="subCategoryId">
+                  <select id="subCategoryId" class="form-select" name="subCategoryId">
+                  <option value="-1">Select Sub Category</option>
                   <%
                   for(SubCategoryBean cb : list2){
                   %>
                  <option value="<%=cb.getSubCategoryId()%>"><%=cb.getSubCategoryName()%></option> <% } %>
                  </select>
+                 <span id="subCategoryIdError" class="error"></span>
                 </div>
              <div class="col-12">
              <label for="inputState" class="form-label">Vendor</label>
-                  <select id="inputState" class="form-select" name="vendorId">
+                  <select id="vendorId" class="form-select" name="vendorId">
+                  <option value="-1">Select Vendor</option>
                   <%
                 for(VendorBean cb : list3){
                 %>
                     <option value="<%=cb.getVendorId()%>"><%=cb.getVendorName()%></option><% } %>
                   
                   </select>
+                  <span id="vendorIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 
                 <div class="col-12">
                   <label for="inputState" class="form-label">Account Type</label>
-                  <select id="inputState" class="form-select" name="accountTypeId">
+                  <select id="accountTypeId" class="form-select" name="accountTypeId">
+                  <option value="-1">Select Account Type</option>
                   <%
                 for(AccountTypeBean cb : list4){
                 %>
                     <option value="<%=cb.getAccountTypeId()%>"><%=cb.getAccountType()%></option><% } %>
                   
                   </select>
+                  <span id="accountTypeIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 
                 <div class="col-12">
                   <label for="inputState" class="form-label">Status</label>
-                  <select id="inputState" class="form-select" name="statusId">
+                  <select id="statusId" class="form-select" name="statusId">
+                  <option value="-1">Select Status</option>
                   <%
                 for(StatusBean cb : list5){
                 %>
                     <option value="<%=cb.getStatusId()%>"><%=cb.getStatus()%></option><% } %>
                   
                   </select>
+                  <span id="statusIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 
                <div class="col-12">
                   <label for="inputName5" class="form-label">Amount</label>
-                  <input type="text" class="form-control" id="amount" name="amount">
+                  <input type="no" class="form-control" id="amount" name="amount">
                    <span id="amountError" class="error"></span>
                 </div>
                 <div class="col-12">
@@ -162,6 +172,10 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 			titleError = document.getElementById("titleError");
 			titleRegex = /^[a-zA-Z]+$/;
 			
+			amount = document.getElementById("amount");
+			amountError = document.getElementById("amountError");
+			amountRegex = /^[0-9]+$/;
+
 			description = document.getElementById("description");
 			descriptionError = document.getElementById("descriptionError");
 			descriptionRegex = /^[a-zA-Z]+$/;
@@ -178,6 +192,56 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 
 				}
 			}
+			
+			categoryId = document.getElementById("categoryId");
+			categoryIdError = document.getElementById("categoryIdError");
+			if(categoryId.value=="-1"){
+				categoryIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+			
+			subCategoryId = document.getElementById("subCategoryId");
+			subCategoryIdError = document.getElementById("subCategoryIdError");
+			if(subCategoryId.value=="-1"){
+				subCategoryIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+			vendorId = document.getElementById("vendorId");
+			vendorIdError = document.getElementById("vendorIdError");
+			if(vendorId.value=="-1"){
+				vendorIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+			accountTypeId = document.getElementById("accountTypeId");
+			accountTypeIdError = document.getElementById("accountTypeIdError");
+			if(accountTypeId.value=="-1"){
+				accountTypeIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+			statusId = document.getElementById("statusId");
+			statusIdError = document.getElementById("statusIdError");
+			if(statusId.value=="-1"){
+				statusIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+			
+			if (amount.value == '') {
+				amountError.innerHTML = "Please fill out this field.";
+				isError = true;
+			} else {
+				if (amountRegex.test(amount.value) == false) {
+					mountError.innerHTML = "Please Enter Valid Amount";
+					isError = true;
+				} else {
+					amountError.innerHTML = "";
+
+				}
+			}
+			
+			if (date.value == '') {
+				dateError.innerHTML = "Please fill out this field.";
+				isError = true;
+			} 
 			
 			if (description.value == '') {
 				descriptionError.innerHTML = "Please fill out this field.";

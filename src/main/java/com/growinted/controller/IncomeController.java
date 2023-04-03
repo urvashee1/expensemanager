@@ -85,6 +85,12 @@ public String viewIncomeById(@RequestParam("incomeId") Integer incomeId,Model mo
 public String editIncome(@RequestParam("incomeId") Integer incomeId,Model model) {
 	IncomeBean incomeBean = incomeDao.getIncomeById(incomeId);
 	model.addAttribute("incomeBean",incomeBean);
+	List<UserBean> list=userDao.getAllUser();
+    List<AccountTypeBean> list1=accountTypeDao.getAllAccountType();
+    List<StatusBean> list2=statusDao.getAllStatus();
+    model.addAttribute("list",list);
+    model.addAttribute("list1",list1);
+	model.addAttribute("list2",list2);
 	return "EditIncome";
 }
 @PostMapping("/updateincome")

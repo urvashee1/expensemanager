@@ -66,7 +66,7 @@ IncomeBean incomeBean=(IncomeBean)request.getAttribute("incomeBean");
 </div>
 <div class="row">
 <div class="col-lg-3 col-md-4 label"><b>Status</b></div>
-<div class="col-lg-9 col-md-8"><%=incomeBean.getDeleted()==true?"ACTIVE":"DISABLE"%></div>
+<div class="col-lg-9 col-md-8"><%=incomeBean.getDeleted()%></div>
 </div>
 <div class="row">
 <div class="col-lg-3 col-md-4 label"><b>FirstName</b></div>

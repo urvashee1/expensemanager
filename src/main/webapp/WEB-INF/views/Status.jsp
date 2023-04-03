@@ -53,7 +53,7 @@ Status:<input type="text" name="status"><br><br>
               <!-- Multi Columns Form -->
               <form class="row g-3" action="savestatus" method="post" id="myform">
                 <div class="col-12">
-                  <label for="inputName5" class="form-label">Status</label>
+                  <label for="yourstatus" class="form-label">Status</label>
                   <input type="text" class="form-control" id="status" name="status">
                   <span id="statusError" class="error"></span>
                 </div>
@@ -79,7 +79,7 @@ Status:<input type="text" name="status"><br><br>
 			statusError = document.getElementById("statusError");
 			statusRegex = /^[a-zA-Z]+$/;
 			
-			if (status.value == '') {
+			if (status.value == '' || status.value==undefined) {
 				statusError.innerHTML = "Please fill out this field.";
 				isError = true;
 			} else {

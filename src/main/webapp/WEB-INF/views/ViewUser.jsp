@@ -77,6 +77,14 @@ UserBean userBean=(UserBean)request.getAttribute("userBean");
 <div class="col-lg-3 col-md-4 label"><b>ContactNo</b></div>
 <div class="col-lg-9 col-md-8"><%=userBean.getContactNo()%></div> 
 </div>
+<div class="row">
+<div class="col-lg-3 col-md-4 label"><b>Active</b></div>
+<div class="col-lg-9 col-md-8"><%=userBean.getDeleted()==true? "ACTIVE" : "DISABLE"%></div> 
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-4 label"><b>Status</b></div>
+<div class="col-lg-9 col-md-8"><%=userBean.getDeleted()%></div> 
+</div>
 </div>
 </div>
 </div>

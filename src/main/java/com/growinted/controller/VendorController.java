@@ -24,7 +24,7 @@ public class VendorController {
 		return "Vendor";// jsp--open
 	}
 
-	@PostMapping("/savevendor")
+@PostMapping("/savevendor")
 	public String saveVendor(VendorBean vendorbean) {
     System.out.println(vendorbean.getVendorName());
 	vendorDao.addVendor(vendorbean);

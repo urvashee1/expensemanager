@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.growinted.bean.AccountTypeBean;
 import com.growinted.bean.ForgetPasswordBean;
 import com.growinted.bean.LoginBean;
+import com.growinted.bean.StatusBean;
 import com.growinted.bean.UpdatePasswordBean;
 import com.growinted.bean.UserBean;
 
@@ -42,9 +43,9 @@ public void insertUser(UserBean userBean) {
 	int y=c.get(c.YEAR);
 	String today=y+ "-" + mon + "-" +dt;
 	System.out.println(today);
-	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active) values (?,?,?,?,?,?,?,?,?,?)";
+	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active,deleted) values (?,?,?,?,?,?,?,?,?,?,?)";
 	//role -> 2 for customer/buyer/user
-	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getContactNo(),today,false); //query execute
+	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getContactNo(),today,false,false); //query execute
 }
 public UserBean authenticateUser(LoginBean loginBean) {
 	try{
@@ -122,5 +123,13 @@ public UserBean getUserById(Integer userId) {
         System.out.println(e.getMessage());
 	}
 	return userBean;
+}
+public void deleteUser(Integer userId,boolean currentStatus) {
+	String updateQuery="update user set deleted = ? where userId =?";
+	stmt.update(updateQuery,currentStatus,userId);
+}
+public void updateUser(UserBean userBean) {
+	String updateQuery="update users set firstName=? where userId=?";
+    stmt.update(updateQuery,userBean.getFirstName(),userBean.getUserId());
 }
 }

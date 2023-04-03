@@ -69,22 +69,22 @@
 		          <!--<td><%=sb.getCreatedAt()%></td>-->
 		          <td><%=sb.getContactNo()%></td>
 		         
-		         <!-- <td>
+		         <td>
 		          <div class="form-check form-switch">
 		          <input class="form-check-input" onclick="changeStatus(<%=sb.getUserId()%>,<%=sb.getDeleted()%>)" type="checkbox" id="flexSwitchCheckChecked" 
 		          <%=!sb.getDeleted()? "checked" : ""%>>
 		          </div>
-		          </td>-->
+		          </td>
 		          <td>
-		          <a style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
-		          <a href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a>
+		          <a href="edituser?userId=<%=sb.getUserId()%>" style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
+              <!--<a href="deleteuser/<%=sb.getUserId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a>-->
                    <a href="viewuser?userId=<%=sb.getUserId()%>" style="color:black;"><i class="bi bi-eye" style="font-size:20px;"></i></a></td>
                     </tr>
                   <%} %>
                   </tbody>
               </table>
               </div>
-        <a href="signup" style="color:black;"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
+        <a href="newuser" style="color:black;"><div style="margin-left:1080px;" class="icon"><i class="ri-add-box-fill fs-2"></i></div></a>
         </div> 
 </div>
             </div>
@@ -94,5 +94,12 @@
 </main>
 <jsp:include page="AdminFooter.jsp"></jsp:include>
 <jsp:include page="AllJs.jsp"></jsp:include>
+
+<script type="text/javascript">
+function changeStatus(userId,currentStatus){
+	
+	location.href="deleteuser/"+userId+"/"+currentStatus;
+}
+</script>
 </body>
 </html>

@@ -49,7 +49,7 @@
                   <!--<th>FirstName</th>-->
                   <!--<th>CategoryName</th>-->
                   <!--<th>SubCategoryName</th>-->
-                  <th>VendorName</th>
+                  <th>Vendor</th>
                   <!--<th>AccountType</th>-->
                   <!--<th>Status</th>-->
                   <th>Amount</th>

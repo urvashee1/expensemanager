@@ -1,7 +1,6 @@
 package com.growinted.controller;
 import java.util.List;
 
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -165,8 +164,26 @@ public String viewUserById(@RequestParam("userId") Integer userId,Model model) {
 	return "ViewUser";
 }
 @GetMapping("/deleteuser/{userId}/{currentstatus}")
-public String deleteUser(@PathVariable("userId") Integer userId,@PathVariable("currentStatus")boolean currentStatus){
+public String deleteUser(@PathVariable("userId") Integer userId,@PathVariable("currentStatus") boolean currentStatus){
+userDao.deleteUser(userId,currentStatus);
+	return "redirect:/listuser";
+}
+@PostMapping("/saveusers")
+public String saveUsers(UserBean userbean) {
+    System.out.println(userbean.getFirstName());
+	userDao.insertUser(userbean);
+	return "User";
+}
 
+@GetMapping("/edituser")
+public String editUser(@RequestParam("userId") Integer userId,Model model) {
+	UserBean userBean = userDao.getUserById(userId);
+	model.addAttribute("userBean",userBean);
+	return "EditUser";
+}
+@PostMapping("/updateuser")
+public String updateUser(UserBean userBean) {
+	userDao.updateUser(userBean);
 	return "redirect:/listuser";
 }
 }

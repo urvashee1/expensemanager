@@ -57,6 +57,8 @@ public String deletesubCategory(@PathVariable("subCategoryId") Integer subCatego
 public String editsubCategory(@RequestParam("subcategoryId") Integer subcategoryId,Model model) {
 	SubCategoryBean subcategoryBean = subcategoryDao.getSubCategoryById(subcategoryId);
 	model.addAttribute("subcategoryBean",subcategoryBean);
+	List<CategoryBean> list=categoryDao.getAllCategory();
+	model.addAttribute("list",list);
 	return "EditSubCategory";
 }
 @PostMapping("/updatesubcategory")

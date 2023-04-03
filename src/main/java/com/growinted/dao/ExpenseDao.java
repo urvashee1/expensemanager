@@ -47,7 +47,7 @@ public ExpenseBean getExpenseById(Integer expenseId) {
 }
 public void updateExpense(ExpenseBean expenseBean) {
 	String updateQuery="update expense set title=? where expenseId=?";
-    stmt.update(updateQuery,expenseBean.getCategoryName(),expenseBean.getCategoryId());
+    stmt.update(updateQuery,expenseBean.getTitle(),expenseBean.getExpenseId());
 }
 }
 

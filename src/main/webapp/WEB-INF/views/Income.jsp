@@ -53,38 +53,44 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Account Type</label>
-                  <select id="inputState" class="form-select" name="accountTypeId">
+                  <select id="accountTypeId" class="form-select" name="accountTypeId">
+                  <option value="-1">Select Account Type</option>
                   <%
                 for(AccountTypeBean cb : list1){
                 %>
                     <option value="<%=cb.getAccountTypeId()%>"><%=cb.getAccountType()%></option><% } %>
                   
                   </select>
+                  <span id="accountTypeIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
               
                 <div class="col-12">
                   <label for="inputState" class="form-label">Status</label>
-                  <select id="inputState" class="form-select" name="statusId">
+                  <select id="statusId" class="form-select" name="statusId">
+                  <option value="-1">Select Status</option>
                   <%
                 for(StatusBean cb : list2){
                 %>
                     <option value="<%=cb.getStatusId()%>"><%=cb.getStatus()%></option><% } %>
                   
                   </select>
+                  <span id="statusIdError" class="error"></span>
                   </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
           
                   <div class="col-12">
                   <label for="inputName5" class="form-label">Amount</label>
-                  <input type="text" class="form-control" id="inputName5" name="amount">
+                  <input type="text" class="form-control" id="amount" name="amount">
+                  <span id="amountError" class="error"></span>
                 </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="inputName5" name="date">
-                </div>
+                  <input type="date" class="form-control" id="date" name="date">
+                  <span id="dateError" class="error"></span>
+                  </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
                   <input type="text" class="form-control" id="description" name="description">
@@ -113,6 +119,10 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
 			titleError = document.getElementById("titleError");
 			titleRegex = /^[a-zA-Z]+$/;
 			
+			amount = document.getElementById("amount");
+			amountError = document.getElementById("amountError");
+			amountRegex = /^[0-9]+$/;
+			
 			description = document.getElementById("description");
 			descriptionError = document.getElementById("descriptionError");
 			descriptionRegex = /^[a-zA-Z]+$/;
@@ -128,6 +138,38 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
 					titleError.innerHTML = "";
 
 				}
+			}
+			
+			accountTypeId = document.getElementById("accountTypeId");
+			accountTypeIdError = document.getElementById("accountTypeIdError");
+			if(accountTypeId.value=="-1"){
+				accountTypeIdError.innerHTML="Please fill out this field.";
+			    isError=true;
+			}
+			
+			statusId = document.getElementById("statusId");
+			statusIdError = document.getElementById("statusIdError");
+			if(statusId.value=="-1"){
+				statusIdError.innerHTML="Please fill out this field.";
+			    isError=true;
+			}
+			
+			if (amount.value == '') {
+				amountError.innerHTML = "Please fill out this field.";
+				isError = true;
+			} else {
+				if (amountRegex.test(amount.value) == false) {
+					mountError.innerHTML = "Please Enter Valid Amount";
+					isError = true;
+				} else {
+					amountError.innerHTML = "";
+
+				}
+			}
+			
+			if (date.value == '') {
+				dateError.innerHTML = "Please fill out this field.";
+				isError = true;
 			}
 			
 			if (description.value == '') {

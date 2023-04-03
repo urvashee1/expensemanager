@@ -109,8 +109,20 @@ public String viewExpenseById(@RequestParam("expenseId") Integer expenseId,Model
 @GetMapping("/editexpense")
 public String editExpense(@RequestParam("expenseId") Integer expenseId,Model model) {
     ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
-	model.addAttribute("expenseBean",expenseBean);
-	return "EditExpense";
+    model.addAttribute("expenseBean",expenseBean);
+    List<UserBean> list=userDao.getAllUser();
+    List<CategoryBean> list1=categoryDao.getAllCategory();
+    List<SubCategoryBean> list2=subcategoryDao.getAllSubCategory();
+    List<VendorBean> list3=vendorDao.getAllVendor();
+    List<AccountTypeBean> list4=accountTypeDao.getAllAccountType();
+    List<StatusBean> list5=statusDao.getAllStatus();
+    model.addAttribute("list",list);
+    model.addAttribute("list1",list1);
+	model.addAttribute("list2",list2);
+	model.addAttribute("list3",list3);
+	model.addAttribute("list4",list4);
+	model.addAttribute("list5",list5);
+    return "EditExpense";
 }
 @PostMapping("/updateexpense")
 public String updateExpense(ExpenseBean expenseBean) {

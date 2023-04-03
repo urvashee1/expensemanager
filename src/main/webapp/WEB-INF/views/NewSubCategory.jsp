@@ -49,7 +49,8 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Category</label>
-                  <select id="inputState" class="form-select" name="categoryId">
+                  <select id="categoryId" class="form-select" name="categoryId" aria-label="Default select example">
+                  <option value="-1">Select Category</option>
                   <%
                 for(CategoryBean cb : list){
                 %>
@@ -58,6 +59,7 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
                   </select>
                   <span id="categoryIdError" class="error"></span>
                   </div>
+                  
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 <div class="text-center">
@@ -110,6 +112,14 @@ for(CategoryBean cb : list){
 
 				}
 			}
+			
+			categoryId=document.getElementById("categoryId");
+			categoryIdError = document.getElementById("categoryIdError");
+			if(categoryId.value=="-1"){
+				categoryIdError.innerHTML="Please fill out this field."
+			    isError=true;
+			}
+	
 			if (isError == false) {
 				myform = document.getElementById("myform");
 				myform.submit();

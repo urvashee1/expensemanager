@@ -22,7 +22,7 @@ public class StatusController {
 		return "Status";// jsp--open
 	}
 
-	@PostMapping("/savestatus")
+@PostMapping("/savestatus")
 	public String saveStatus(StatusBean statusbean) {
     System.out.println(statusbean.getStatus());
 	statusDao.addStatus(statusbean);

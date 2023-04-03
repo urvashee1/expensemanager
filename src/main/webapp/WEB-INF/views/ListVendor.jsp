@@ -39,7 +39,7 @@
                 <thead>
                   <tr>
                   <th>VendorId</th>
-                  <th>VendorName</th>
+                  <th>Vendor</th>
                   <th>Status</th>
                   <th>Action</th>
                   </tr>
