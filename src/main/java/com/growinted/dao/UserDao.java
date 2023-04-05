@@ -125,11 +125,23 @@ public UserBean getUserById(Integer userId) {
 	return userBean;
 }
 public void deleteUser(Integer userId,boolean currentStatus) {
-	String updateQuery="update user set deleted = ? where userId =?";
+	String updateQuery="update users set deleted = ? where userId =?";
 	stmt.update(updateQuery,currentStatus,userId);
 }
 public void updateUser(UserBean userBean) {
 	String updateQuery="update users set firstName=? where userId=?";
     stmt.update(updateQuery,userBean.getFirstName(),userBean.getUserId());
+}
+public UserBean verifyOtpByPassword(UpdatePasswordBean upBean) {
+	try {
+		String otpQuery="select * from users where password=?";
+	UserBean user=stmt.queryForObject(otpQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { upBean.getPassword()});
+return user;
+	}
+	catch(Exception e) {
+		System.out.println("SWM -->UserDao::verifyOtpByPassword()");
+		System.out.println(e.getMessage());
+     }
+return null;
 }
 }

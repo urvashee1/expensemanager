@@ -14,6 +14,7 @@ private String createdAt;
 private Boolean active;
 private String contactNo;
 private Boolean deleted;
+private String imageUrl;
 public Integer getUserId() {
 	return userId;
 }
@@ -91,6 +92,15 @@ public Boolean getDeleted() {
 }
 public void setDeleted(Boolean deleted) {
 	this.deleted = deleted;
+}
+public String getImageUrl() {
+	return imageUrl;
+}
+public void setImageUrl(String imageUrl) {
+	this.imageUrl = imageUrl;
+}
+public Boolean getActive() {
+	return active;
 }
 }
 

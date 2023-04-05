@@ -20,12 +20,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>User</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">User</li>
+          <li class="breadcrumb-item">User</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -35,7 +35,7 @@
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">User</h5>
+              <h5 class="card-title">New User</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="saveusers" method="post" id="myform">

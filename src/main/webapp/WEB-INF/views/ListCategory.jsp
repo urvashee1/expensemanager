@@ -19,12 +19,12 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Tables</h1>
+			<h1>Category</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-					<li class="breadcrumb-item">Tables</li>
-					<li class="breadcrumb-item active">Category</li>
+					<li class="breadcrumb-item">Category</li>
+					<li class="breadcrumb-item active">List</li>
 				</ol>
 			</nav>
 		</div>
@@ -61,7 +61,7 @@
 												<td>
 												<a href="editcategory?categoryId=<%=cb.getCategoryId()%>" style="color:blue;"><i class="bi bi-pencil-square" style="font-size:20px;"></i></a>
 												<a href="deletecategory/<%=cb.getCategoryId()%>" onclick="return confirm('Are you sure want to delete this record?')" style="color:red;"><i class="bi bi-trash" style="font-size:20px;"></i></a></td>			
-											</tr>
+			                                </tr>
 											<%
 											}
 											%>

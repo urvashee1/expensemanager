@@ -163,7 +163,7 @@ public String viewUserById(@RequestParam("userId") Integer userId,Model model) {
 	model.addAttribute("userBean",userBean);
 	return "ViewUser";
 }
-@GetMapping("/deleteuser/{userId}/{currentstatus}")
+@GetMapping("/deleteuser/{userId}/{currentStatus}")
 public String deleteUser(@PathVariable("userId") Integer userId,@PathVariable("currentStatus") boolean currentStatus){
 userDao.deleteUser(userId,currentStatus);
 	return "redirect:/listuser";
@@ -186,4 +186,17 @@ public String updateUser(UserBean userBean) {
 	userDao.updateUser(userBean);
 	return "redirect:/listuser";
 }
+@PostMapping("/changepassword")
+public String changePassword(UpdatePasswordBean upBean) {
+System.out.println(upBean.getPassword());
+UserBean user=userDao.verifyOtpByPassword(upBean);
+if(user==null) {
+	return "MyProfile";
+}
+else {
+	userDao.updateMyPasword(upBean);
+    return "Login";
+}
+}
+
 }

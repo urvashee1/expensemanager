@@ -17,12 +17,12 @@
 %>
 <main id="main" class="main">
 <div class="pagetitle">
-<h1>Tables</h1>
+<h1>Status</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Status</li>
+          <li class="breadcrumb-item">Status</li>
+          <li class="breadcrumb-item active">List</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

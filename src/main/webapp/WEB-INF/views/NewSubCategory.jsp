@@ -23,12 +23,12 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Sub Category</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Sub Category</li>
+          <li class="breadcrumb-item">Sub Category</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -38,7 +38,7 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Sub Category</h5>
+              <h5 class="card-title">New Sub Category</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="savesubcategory" method="post" id="myform">

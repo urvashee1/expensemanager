@@ -21,13 +21,13 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/messages-1.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">${cookie.firstName.value}</span>
+            <img src="${user.imageUrl}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">${user.firstName}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
            <li class="dropdown-header">
-              <h6>${cookie.firstName.value}</h6>
+              <h6>${user.firstName}</h6>
               <span>ADMIN</span>
             </li>
             <li>
@@ -35,7 +35,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="adminviewprofile">
+              <a class="dropdown-item d-flex align-items-center" href="myprofile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

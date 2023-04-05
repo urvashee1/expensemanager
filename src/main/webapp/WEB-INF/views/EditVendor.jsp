@@ -28,12 +28,12 @@ VendorName:<input type="text" name="vendorName"><br><br>
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Vendor</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Edit Vendor</li>
+          <li class="breadcrumb-item">Vendor</li>
+          <li class="breadcrumb-item active">Edit</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -49,7 +49,7 @@ VendorName:<input type="text" name="vendorName"><br><br>
               <form class="row g-3" action="updatevendor" method="post">
                <input type="hidden" name="vendorId" value="${vendorBean.vendorId}"/>
                 <div class="col-12">
-                  <label for="inputName5" class="form-label">Vendor Name</label>
+                  <label for="inputName5" class="form-label">Vendor</label>
                   <input type="text" class="form-control" id="inputName5" name="vendorName" value="${vendorBean.vendorName}">
                 </div>
                 <div class="text-center">

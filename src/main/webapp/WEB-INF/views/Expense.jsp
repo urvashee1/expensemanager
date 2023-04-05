@@ -39,12 +39,12 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Expense</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Expense</li>
+          <li class="breadcrumb-item">Expense</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -54,7 +54,7 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Expense</h5>
+              <h5 class="card-title">New Expense</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="saveexpense" method="post" id="myform">
@@ -146,9 +146,10 @@ List<StatusBean> list5=(List<StatusBean>) request.getAttribute("list5");
                 </div>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="description" name="description">
-                   <span id="descriptionError" class="error"></span>
+                  <textarea class="form-control" id="description" name="description"></textarea>
+                    <span id="descriptionError" class="error"></span>
                 </div>
+                <span id="descriptionError" class="error"></span>
                 <div class="text-center">
                   <input type="button" class="btn btn-primary" value="Save Expense" onclick="validation()"/>
                   <a type="button" href="listexpense" class="btn btn-secondary">Cancel</a>

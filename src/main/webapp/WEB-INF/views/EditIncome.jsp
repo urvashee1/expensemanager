@@ -22,12 +22,12 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Income</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Edit Income</li>
+          <li class="breadcrumb-item">Income</li>
+          <li class="breadcrumb-item active">Edit</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -82,7 +82,7 @@ List<StatusBean> list2=(List<StatusBean>) request.getAttribute("list2");
                 </div>
                  <div class="col-12">
                   <label for="inputName5" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="inputName5" name="description" value="${incomeBean.description}">
+                  <textarea class="form-control" id="inputName5" name="description" value="${incomeBean.description}"></textarea>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >Save Income</button>

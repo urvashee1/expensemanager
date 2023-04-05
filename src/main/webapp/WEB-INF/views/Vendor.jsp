@@ -33,12 +33,12 @@ VendorName:<input type="text" name="vendorName"><br><br>
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Vendor</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Vendor</li>
+          <li class="breadcrumb-item">Vendor</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -48,7 +48,7 @@ VendorName:<input type="text" name="vendorName"><br><br>
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vendor</h5>
+              <h5 class="card-title">New Vendor</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="savevendor" method="post" id="myform">
@@ -83,7 +83,7 @@ VendorName:<input type="text" name="vendorName"><br><br>
 				vendorNameError.innerHTML = "Please fill out this field.";
 				isError = true;
 			} else {
-				if (vendorNameRegex.test(svendorName.value) == false) {
+				if (vendorNameRegex.test(vendorName.value) == false) {
 					vendorNameError.innerHTML = "Please Enter Valid VendorName";
 					isError = true;
 				} else {

@@ -34,11 +34,11 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Form Layouts</h1>
+			<h1>Expense</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-					<li class="breadcrumb-item">Forms</li>
+					<li class="breadcrumb-item">Expense</li>
 					<li class="breadcrumb-item active">Edit Expense</li>
 				</ol>
 			</nav>
@@ -154,8 +154,7 @@
 								</div>
 								<div class="col-12">
 									<label for="inputName5" class="form-label">Description</label>
-									<input type="text" class="form-control" id="inputName5"
-										name="description" value="${expenseBean.description}">
+									<textarea class="form-control" id="inputName5" name="description" value="${expenseBean.description}"></textarea>
 								</div>
 								<div class="text-center">
 									<button type="submit" class="btn btn-primary">Update

@@ -12,7 +12,7 @@
       <li class=nav-item"><a class="nav-link collapsed" href="listcategories"><i class="bi bi-person"></i><span>Category</span></a></li>-->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>New Resources</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
          <li>
@@ -58,42 +58,42 @@
         </ul>
       </li><!-- End Forms Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+      <!--<li class="nav-item">-->
+       <!-- <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Resources</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
+        </a>-->
+        <!-- <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
+          <!--<li>-->
            <!-- <a href="tables-data.html">-->
-           <a href="listuser">
+           <!--<a href="listuser">
               <i class="bi bi-circle"></i><span>List User</span>
             </a>
-          </li>
-          <li>
+          </li>-->
+          <!--<li>
             <a href="listcategories">
               <i class="bi bi-circle"></i><span>List Category</span>
             </a>
-          </li>
-            <li>
+          </li>-->
+            <!-- <li>
             <a href="listsubcategories">
               <i class="bi bi-circle"></i><span>List Sub Category</span>
             </a>
-          </li>
-           <li>
+          </li>-->
+           <!--<li>
             <a href="listvendor">
               <i class="bi bi-circle"></i><span>List Vendor</span>
             </a>
-          </li>
-           <li>
+          </li>-->
+           <!--<li>
             <a href="listaccounttype">
               <i class="bi bi-circle"></i><span>List AccountType</span>
             </a>
-          </li>
-           <li>
+          </li>-->
+           <!--<li>
             <a href="liststatus">
               <i class="bi bi-circle"></i><span>List Status</span>
             </a>
-          </li>
+          </li>-->
           <!--<li>
             <a href="listexpense">
               <i class="bi bi-circle"></i><span>List Expense</span>
@@ -104,7 +104,7 @@
               <i class="bi bi-circle"></i><span>List Income</span>
             </a>
           </li>-->
-        </ul>
-      </li><!-- End Tables Nav -->
- </ul>
+      <!--  </ul>
+      </li>--><!-- End Tables Nav -->
+ <!-- </ul>-->
   </aside><!-- End Sidebar-->

@@ -27,18 +27,19 @@ Status:<input type="text" name="status"><br><br>
 }
 </style>
 </head>
+
 <body>
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Status</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Status</li>
+          <li class="breadcrumb-item">Status</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -48,13 +49,16 @@ Status:<input type="text" name="status"><br><br>
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Status</h5>
+              <h5 class="card-title">New Status</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="savestatus" method="post" id="myform">
                 <div class="col-12">
                   <label for="yourstatus" class="form-label">Status</label>
-                  <input type="text" class="form-control" id="status" name="status">
+                  
+                  <input type="text" class="form-control" id="status11" name="status" />
+                  
+                  
                   <span id="statusError" class="error"></span>
                 </div>
                 <div class="text-center">
@@ -75,15 +79,15 @@ Status:<input type="text" name="status"><br><br>
 	<script type="text/javascript">
 		function validation() {
 			isError = false;
-			status = document.getElementById("status");
+			statusx = document.getElementById("status11");
 			statusError = document.getElementById("statusError");
 			statusRegex = /^[a-zA-Z]+$/;
 			
-			if (status.value == '' || status.value==undefined) {
+			if (statusx.value == '' || statusx.value==undefined) {
 				statusError.innerHTML = "Please fill out this field.";
 				isError = true;
 			} else {
-				if (statusRegex.test(status.value) == false) {
+				if (statusRegex.test(statusx.value) == false) {
 					statusError.innerHTML = "Please Enter Valid Status";
 					isError = true;
 				} else {

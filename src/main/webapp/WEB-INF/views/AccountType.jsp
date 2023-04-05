@@ -18,12 +18,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Account Type</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Account Type</li>
+          <li class="breadcrumb-item">Account Type</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -33,7 +33,7 @@
         <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Account Type</h5>
+              <h5 class="card-title">New Account Type</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="saveaccounttype" method="post" id="myform">
@@ -72,7 +72,7 @@
 				accounttypeError.innerHTML = "Please fill out this field.";
 				isError = true;
 			} else {
-				if (accounttypeRegex.test(accounttypeName.value) == false) {
+				if (accounttypeRegex.test(accounttype.value) == false) {
 					accounttypeError.innerHTML = "Please Enter Valid AccountType";
 					isError = true;
 				} else {
