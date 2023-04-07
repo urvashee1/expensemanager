@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.growinted.bean.ExpenseChartBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -198,9 +200,98 @@
               </div>
 
             </div>--><!-- End Customers Card -->
+            <%
+                 List<ExpenseChartBean> vendorchartData=(List<ExpenseChartBean>)request.getAttribute("vendorchartData");
+                 %>
+    <div>
+    <canvas id="expensechart"></canvas>
+                  </div>
+                   <script>
+                    const ctx = document.getElementById('expensechart');
+
+                 new Chart(
+                		 ctx, 
+                		 {
+                 type: 'doughnut',
+                data: {
+             labels: [
+            	 <%for(ExpenseChartBean e: vendorchartData){%>
+            	 '<%=e.getVendorName()%>',
+            	 <%}%>],
+      datasets: [{
+        label: '# of Amount',
+        data: [
+        	<%for(ExpenseChartBean e: vendorchartData){%>
+        	<%=e.getAmount()%>,
+        	<%}%>
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+                                    <!-- End Line Chart -->
+
+                </div>
+
+              </div>
+            </div><!-- End Reports -->
+         
+          </div>
+          </div>
+      </div>
+    </section>
+
+                  
+const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+<!-- linechart -->
+ <div>
+    <canvas id="expensechart"></canvas>
+                  </div>
+                   <script>
+<!--const labels = Utils.months({count: 7});-->
+const data = {
+		 <%for(ExpenseChartBean e: categorychartData){%>
+    	 '<%=e.getCategoryName()%>',
+    	 <%}%>],
+  datasets: [{
+    label: '# of Amount',
+    data: <%for(ExpenseChartBean e: categorychartData){%>
+	<%=e.getAmount()%>,
+	<%}%>
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+</script>
 
             <!-- Reports -->
-            <div class="col-12">
+            <!--  <div class="col-12">
               <div class="card">
 
                 <div class="filter">
@@ -214,15 +305,15 @@
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
                   </ul>
-                </div>
+                </div>-->
 
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                <!--<div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>-->
 
                   <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <!--<div id="reportsChart"></div>-->
 
-                  <script>
+                  <!-- <script>
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
@@ -273,13 +364,13 @@
                         }
                       }).render();
                     });
-                  </script>
+                  </script>-->
                   <!-- End Line Chart -->
 
-                </div>
+                <!-- </div>-->
 
-              </div>
-            </div><!-- End Reports -->
+            <!--   </div>
+            </div>--><!-- End Reports -->
     
           <!-- </div>
         </div>--><!-- End Left side columns -->

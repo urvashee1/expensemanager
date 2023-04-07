@@ -97,7 +97,6 @@
 
 <script type="text/javascript">
 function changeStatus(userId,currentStatus){
-	
 	location.href="deleteuser/"+userId+"/"+currentStatus;
 }
 </script>

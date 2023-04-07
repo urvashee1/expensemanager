@@ -1,6 +1,7 @@
 package com.growinted.controller;
 
 import java.io.File;
+
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -19,29 +20,21 @@ public class AdminController{
 	@Autowired
 	AdminDao adminDao;
 	@GetMapping("/admindashboard")
-	public String adminDashboaard(Model model) {
+	public String adminDashboard(Model model) {
 		System.out.println("Inside admindashboard--url-metho--");
 		//totalOrderCount-Today
-		int totalUsers =  adminDao.getUsersCount();
-		int totalExpenseCount = adminDao.getExpenseCount();
-		int totalExpenseDaily = adminDao.getAmmountOfExpennseDaily();
-		int totalExpenseMonthly = adminDao.getAmmountOfExpenseMonthly();
-		int ratioUsersMonthly = adminDao.getUserRatioMonthly();
-		int ratioTransactionMonthly = adminDao.getRatioOfTransaction();
-		Double ratioExpenseDaily = adminDao.getExpenseRatioForPeviousDay();
-		Double ratioExpenseMonthly = adminDao.getExpenseRatioForPeviousMonth();
-	    List<ExpenseChartBean>chartData=adminDao.getExpenseStats();
+		
+		Integer totalExpenseCount=adminDao.getTotalExpenseCountForCurrentDate();
+		Integer totalUserCount=adminDao.getTotalUserCountForCurrentYear();
+		Integer sumOfExpenseAmount=adminDao.getSumOfExpenseAmountForCurrentDate();
+		Integer sumOfIncomeAmount=adminDao.getSumOfIncomeAmountForCurrentDate();
+        List<ExpenseChartBean>chartData=adminDao.getExpenseStats();
 	    
-		model.addAttribute("NumberOfUsers", totalUsers);
-		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);
-		model.addAttribute("TodayExpense", totalExpenseDaily);
-		model.addAttribute("MonthlyExpense", totalExpenseMonthly);
-		model.addAttribute("ratioExpenseDaily", ratioExpenseDaily);
-		model.addAttribute("ratioExpenseMonthly", ratioExpenseMonthly);
-		model.addAttribute("ratioUsersMonthly", ratioUsersMonthly);
-		model.addAttribute("ratioTransactionMonthly", ratioTransactionMonthly);
+	    model.addAttribute("totalTranscation",totalExpenseCount);
+		model.addAttribute("totalExpense",sumOfExpenseAmount);
+		model.addAttribute("totalIncome",sumOfIncomeAmount);
+		model.addAttribute("totalUsers",totalUserCount);
 		model.addAttribute("chartData",chartData);
-
 		return "AdminDashboard";
 	}	
 	@GetMapping("myprofile")

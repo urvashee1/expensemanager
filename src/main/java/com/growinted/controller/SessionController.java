@@ -79,6 +79,7 @@ public String authentication(LoginBean login, Model model,HttpServletResponse re
 		
 		//session
 		session.setAttribute("userId",userBean.getUserId());
+		session.setAttribute("user",userBean);
 		//max inactive interval time
 		session.setMaxInactiveInterval(60*5);//second
 		if(userBean.getRole() == 1) {
@@ -166,6 +167,7 @@ public String viewUserById(@RequestParam("userId") Integer userId,Model model) {
 @GetMapping("/deleteuser/{userId}/{currentStatus}")
 public String deleteUser(@PathVariable("userId") Integer userId,@PathVariable("currentStatus") boolean currentStatus){
 userDao.deleteUser(userId,currentStatus);
+//System.out.println("dfghj");
 	return "redirect:/listuser";
 }
 @PostMapping("/saveusers")
@@ -198,5 +200,4 @@ else {
     return "Login";
 }
 }
-
 }

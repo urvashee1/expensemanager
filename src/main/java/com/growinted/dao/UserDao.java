@@ -1,6 +1,7 @@
 package com.growinted.dao;
 
 import java.util.Calendar;
+
 import java.util.List;
 
 
@@ -10,10 +11,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.growinted.bean.AccountTypeBean;
+//import com.growinted.bean.AccountTypeBean;
+import com.growinted.bean.ExpenseChartBean;
 import com.growinted.bean.ForgetPasswordBean;
 import com.growinted.bean.LoginBean;
-import com.growinted.bean.StatusBean;
+//import com.growinted.bean.StatusBean;
 import com.growinted.bean.UpdatePasswordBean;
 import com.growinted.bean.UserBean;
 
@@ -26,26 +28,30 @@ public void insertUser(UserBean userBean) {
 	Calendar c=Calendar.getInstance();
 	int d=c.get(c.DAY_OF_MONTH);//07
 	int m=c.get(c.MONTH)+1;//03
+	int y=c.get(c.YEAR);
 	String mon="";
 	String dt="";
-	if(m<=9) {
-		mon=0 + "" +m;
-		}
-	else {
-		mon=m+ "";
-		}
-	if(d<=9) {
-		dt=0 + "";
-	}
-	else {
-		dt=d+ "";
-	}
-	int y=c.get(c.YEAR);
 	String today=y+ "-" + mon + "-" +dt;
+	if (m < 10) {
+		today = y + "-0" + m + "-" + d;
+	} else if (m>=10){
+		today = y + "-" + m + "-" + d;
+	}else if(d<10) {
+		today = y + "-" + m + "-0" + d;
+	}else {
+		today = y + "-" + m + "-" + d;
+	}
+	/*
+	 * if(m<=9) { mon=0 + "" +m; } else { mon=m+ ""; } if(d<=9) { dt="0" + ""; }
+	 * else { dt=d+ ""; }
+	 */
+	//int y=c.get(c.YEAR);
+	//String today=y+ "-" + mon + "-" +dt;
 	System.out.println(today);
 	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active,deleted) values (?,?,?,?,?,?,?,?,?,?,?)";
 	//role -> 2 for customer/buyer/user
 	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getContactNo(),today,false,false); //query execute
+
 }
 public UserBean authenticateUser(LoginBean loginBean) {
 	try{
@@ -125,6 +131,7 @@ public UserBean getUserById(Integer userId) {
 	return userBean;
 }
 public void deleteUser(Integer userId,boolean currentStatus) {
+	currentStatus=!currentStatus;
 	String updateQuery="update users set deleted = ? where userId =?";
 	stmt.update(updateQuery,currentStatus,userId);
 }
@@ -143,5 +150,13 @@ return user;
 		System.out.println(e.getMessage());
      }
 return null;
+}
+public List<ExpenseChartBean> getCategoryStats(){
+	String selectQ="select sum(amount) from expense where userId=? group by categoryId";
+return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));
+}
+public List<ExpenseChartBean> getVendorStats(){
+	String selectQ="select sum(amount) from expense where userId=? group by vendorId";
+return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));
 }
 }

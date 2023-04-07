@@ -66,5 +66,4 @@ public String updateSubCategory(SubCategoryBean subcategoryBean) {
 	subcategoryDao.updateSubCategory(subcategoryBean);
 	return "redirect:/listsubcategories";
 }
-
 }

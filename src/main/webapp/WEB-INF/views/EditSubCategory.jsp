@@ -1,3 +1,4 @@
+<%@page import="com.growinted.bean.SubCategoryBean"%>
 <%@page import="com.growinted.bean.CategoryBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,6 +15,7 @@
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 <%
 List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
+List<SubCategoryBean> list1=(List<SubCategoryBean>) request.getAttribute("list1");
 %>
 <main id="main" class="main">
 
@@ -37,21 +39,23 @@ List<CategoryBean> list=(List<CategoryBean>) request.getAttribute("list");
 
               <!-- Multi Columns Form -->
               <form class="row g-3" action="updatesubcategory" method="post">
-              <input type="hidden" name="subCategoryId" value="${subcategoryBean.subCategoryId}"/>
+              <input type="hidden" name="subCategoryId" value="<%=subcategoryBean.getSubCategoryId()%>"/>
                 <div class="col-12">
                   <label for="inputName5" class="form-label">SubCategoryName</label>
                   <input type="text" class="form-control" id="inputName5" name="subCategoryName" value="${subcategoryBean.subCategoryName}">
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Category</label>
-                  <select id="inputState" class="form-select" name="categoryId" value="${subcategoryBean.categoryId}">
+                  <select id="categoryId" class="form-select" name="categoryId" value="${subcategoryBean.categoryId}">
+                  <option value="-1">Select Category</option>
                   <%
                 for(CategoryBean cb : list){
                 %>
-                    <option value="<%=cb.getCategoryId()%>"><%=cb.getCategoryName()%></option><% } %>
+                    <option value="<%=cb.getCategoryId()%>">
+                    <%=cb.getCategoryId()==subcategoryBean.getCategoryId() ? "selected" : "" %>
+                    <%=cb.getCategoryName()%></option><% } %>
                   
                   </select>
-                  </div>
                     <!-- <option selected>Choose...</option>
                     <option>...</option>-->
                 <div class="text-center">

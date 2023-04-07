@@ -21,11 +21,12 @@ package com.growinted.filter;
 		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 				throws IOException, ServletException {
 			HttpSession session = ((HttpServletRequest) request).getSession();
-			System.out.println("LoginCheckFilter called.....");
+			//System.out.println("LoginCheckFilter called.....");
 
 			String url = ((HttpServletRequest) request).getRequestURI();
+			//if(!url.contains("/assets"))
 		System.out.println(url);
-			if ( url.equals("/") ||  url.contains("/assets") || url.contains("/login") || url.contains("/logout") || url.contains("/signup") || url.contains("/forgetpassword") || url.contains("/authentication") || url.contains("/saveuser") || url.contains("/updatepasswordjspopen") || url.contains("/updatemypassword") || url.contains("/sendotpforforgetpassword") ) {
+			if (url.equals("/") ||  url.contains("/assets") || url.contains("/login") || url.contains("/logout") || url.contains("/signup") || url.contains("/forgetpassword") || url.contains("/authentication") || url.contains("/saveuser") || url.contains("/updatepasswordjspopen") || url.contains("/updatemypassword")) {
 			   chain.doFilter(request, response);
 			} else {
 				if (session.getAttribute("user") == null) {

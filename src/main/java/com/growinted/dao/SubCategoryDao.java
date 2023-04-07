@@ -2,8 +2,6 @@ package com.growinted.dao;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -47,7 +45,7 @@ public class SubCategoryDao {
 	return subcategoryBean;
 	}
 	public void updateSubCategory(SubCategoryBean subcategoryBean) {
-		String updateQuery="update subcategory set subCategoryName=? where subCategoryId=?";
-	    stmt.update(updateQuery,subcategoryBean.getSubCategoryName(),subcategoryBean.getSubCategoryId());
+		String updateQuery="update subcategory set subCategoryName=?, categoryId=? where subCategoryId=?";
+	    stmt.update(updateQuery,subcategoryBean.getSubCategoryName(),subcategoryBean.getCategoryId(),subcategoryBean.getSubCategoryId());
 	}
 }
