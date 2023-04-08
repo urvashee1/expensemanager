@@ -200,43 +200,39 @@
               </div>
 
             </div>--><!-- End Customers Card -->
+            <div class="col-12">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Expense <span>| Vendor</span></h5>
             <%
-                 List<ExpenseChartBean> vendorchartData=(List<ExpenseChartBean>)request.getAttribute("vendorchartData");
+                 List<ExpenseChartBean> piechartData=(List<ExpenseChartBean>)request.getAttribute("piechartData");
                  %>
     <div>
     <canvas id="expensechart"></canvas>
                   </div>
                    <script>
-                    const ctx = document.getElementById('expensechart');
-
-                 new Chart(
-                		 ctx, 
-                		 {
-                 type: 'doughnut',
-                data: {
-             labels: [
-            	 <%for(ExpenseChartBean e: vendorchartData){%>
-            	 '<%=e.getVendorName()%>',
-            	 <%}%>],
-      datasets: [{
-        label: '# of Amount',
-        data: [
-        	<%for(ExpenseChartBean e: vendorchartData){%>
-        	<%=e.getAmount()%>,
-        	<%}%>
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+                   const data = {
+                		   labels: [
+                			   <%for(ExpenseChartBean e: piechartData){%>
+                          	 '<%=e.getVendorId()%>',
+                          	 <%}%>
+                		   ],
+                		   datasets: [{
+                		     label: '# of Amount',
+                		     data: [
+                		     <%for(ExpenseChartBean e: piechartData){%>
+                	        	<%=e.getAmount()%>,
+                	        	<%}%>
+                		     ],
+                		     backgroundColor: [
+                		       'rgb(255, 99, 132)',
+                		       'rgb(54, 162, 235)',
+                		       'rgb(255, 205, 86)'
+                		     ],
+                		     hoverOffset: 4
+                		   }]
+                		 };
+                    </script>
                                     <!-- End Line Chart -->
 
                 </div>
@@ -244,13 +240,13 @@
               </div>
             </div><!-- End Reports -->
          
-          </div>
-          </div>
+         </div>
+         </div>
       </div>
     </section>
 
                   
-const data = {
+<!-- const data = {
   labels: [
     'Red',
     'Blue',
@@ -266,29 +262,47 @@ const data = {
     ],
     hoverOffset: 4
   }]
-};
+};-->
 
 <!-- linechart -->
- <div>
-    <canvas id="expensechart"></canvas>
+<div class="col-12">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Expense <span>| Category</span></h5>
+                  <%
+                 List<ExpenseChartBean> linechartData=(List<ExpenseChartBean>)request.getAttribute("linechartData");
+                 %>
+                 <canvas id="expensechart"></canvas>
                   </div>
                    <script>
+                   const ctx = document.getElementById('linechart');
+
+                   new Chart(
+                  		 ctx, 
+                  		 {
+                   type: 'line',
 <!--const labels = Utils.months({count: 7});-->
-const data = {
-		 <%for(ExpenseChartBean e: categorychartData){%>
-    	 '<%=e.getCategoryName()%>',
-    	 <%}%>],
+const data1 = {
+		lables:[
+		 <%for(ExpenseChartBean e: linechartData){%>
+    	 '<%=e.getCategoryId()%>',
+    	 <%}%>
+    	 ],
   datasets: [{
     label: '# of Amount',
-    data: <%for(ExpenseChartBean e: categorychartData){%>
+    data:[<%for(ExpenseChartBean e: linechartData){%>
 	<%=e.getAmount()%>,
 	<%}%>
+	],
     fill: false,
     borderColor: 'rgb(75, 192, 192)',
     tension: 0.1
   }]
 };
 </script>
+</div>
+</div>
+</div>
 
             <!-- Reports -->
             <!--  <div class="col-12">

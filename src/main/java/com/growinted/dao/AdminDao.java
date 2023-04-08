@@ -56,7 +56,7 @@ public class AdminDao {
 
 	public Integer getTotalUserCountForCurrentYear() {
 
-		String countQuery = "select count(*) from users where createdAt like ?";
+		String countQuery = "select count(*) from users where year(createdAt)= ?";
 
 		// dd-mm-yyyy
 
@@ -64,7 +64,7 @@ public class AdminDao {
 
 		int yyy = c.get(Calendar.YEAR);
 
-		String today = "%-" +yyy;// 2023
+		String today =   yyy+"";// 2023
 
 		System.out.println("CURRENT YEAR => " + today);
 
@@ -118,6 +118,32 @@ System.out.println("TODAY => " + today);
 return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
 
 }
+
+public Integer getTotalIncomeCountForCurrentDate() {
+
+	String countQuery = "select count(*) from income where date like ?";
+
+	// dd-mm-yyyy
+
+	Calendar c = Calendar.getInstance();
+
+	int ddd = c.get(Calendar.DATE);
+	int mmm = c.get(Calendar.MONTH) + 1;
+	int yyy = c.get(Calendar.YEAR);
+
+	String today = "";
+
+	if (mmm < 10) {
+		today = yyy + "-0" + mmm  + "-%" ;
+	} else {
+		today = yyy + "-" + mmm + "-%" ;
+	}
+	System.out.println("TODAY => " + today);
+
+	return stmt.queryForObject(countQuery, Integer.class, new Object[] { today });
+
+}
+
 		public List<ExpenseChartBean> getExpenseStats(){
 		String selectQ="select monthname(date) as month, sum(amount) as amount from expense where year(date)=2023 group by monthname(date), month(date) order by month(date)";
 	return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));

@@ -134,7 +134,11 @@
                         <input name="profileImg" type="file" class="form-control" id="fullName" value="Kevin Anderson">
                       </div>
                     </div>
-                    <input type="hidden" name=userId" value="${user.userId}">
+                   
+                   
+                    <input type="hidden" name="userId" value="${user.userId}">
+                   
+                   
                    <!--<div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                       <div class="col-md-8 col-lg-9">
@@ -212,6 +216,8 @@
                       </div>
                     </div>-->
 
+                    <input type="hidden" name=userId" value="78">
+
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
@@ -253,6 +259,7 @@
                         </div>
                       </div>
                     </div>
+                    <input type="hidden" name=userId" value="78">
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>

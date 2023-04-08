@@ -26,6 +26,7 @@ public class AdminController{
 		
 		Integer totalExpenseCount=adminDao.getTotalExpenseCountForCurrentDate();
 		Integer totalUserCount=adminDao.getTotalUserCountForCurrentYear();
+		System.out.println("totaluser " +totalUserCount);
 		Integer sumOfExpenseAmount=adminDao.getSumOfExpenseAmountForCurrentDate();
 		Integer sumOfIncomeAmount=adminDao.getSumOfIncomeAmountForCurrentDate();
         List<ExpenseChartBean>chartData=adminDao.getExpenseStats();
@@ -43,7 +44,7 @@ public class AdminController{
 	}
 	@PostMapping("/saveprofilepic")
 	public String saveProfilePic(ProfileBean profileBean) {
-		System.out.println(profileBean.getUserId());
+		System.out.println("--->"+profileBean.getUserId());
 		System.out.println(profileBean.getProfileImg().getOriginalFilename());
 		try {
 			File userDir = new File("C:\\sts\\ExpenseManager\\src\\main\\resources\\static\\assets\\profiles",
@@ -59,7 +60,7 @@ public class AdminController{
 			adminDao.updateImageUrl(profileBean);
 			
 		} catch (Exception e) {
-
+			//e.printStackTrace();
 		}
 		return "redirect:/myprofile";
 	}

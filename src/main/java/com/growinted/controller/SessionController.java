@@ -40,7 +40,7 @@ public String saveuser(UserBean user,Model model) {
 	System.out.println(user.getLastName());
 	System.out.println(user.getEmail());
 	System.out.println(user.getPassword());
-	System.out.println(user.getRole());
+	//System.out.println(user.getRole());
 	
 	UserBean userBean=userDao.getUserByEmail(user.getEmail());
 	if(userBean==null) {
@@ -188,6 +188,7 @@ public String updateUser(UserBean userBean) {
 	userDao.updateUser(userBean);
 	return "redirect:/listuser";
 }
+
 @PostMapping("/changepassword")
 public String changePassword(UpdatePasswordBean upBean) {
 System.out.println(upBean.getPassword());

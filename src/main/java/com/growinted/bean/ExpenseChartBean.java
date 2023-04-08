@@ -5,6 +5,7 @@ String month;
 Integer categoryId;
 Integer vendorId;
 Long amount;
+Integer userId;
 public String getMonth() {
 	return month;
 }
@@ -28,5 +29,11 @@ public Integer getVendorId() {
 }
 public void setVendorId(Integer vendorId) {
 	this.vendorId = vendorId;
+}
+public Integer getUserId() {
+	return userId;
+}
+public void setUserId(Integer userId) {
+	this.userId = userId;
 }
 }

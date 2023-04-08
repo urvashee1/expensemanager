@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,142 +20,158 @@ import com.growinted.bean.UserBean;
 
 @Repository
 public class UserDao {
-@Autowired
-JdbcTemplate stmt;
+	@Autowired
+	JdbcTemplate stmt;
+
 //add customer --signup
-public void insertUser(UserBean userBean) {
-	Calendar c=Calendar.getInstance();
-	int d=c.get(c.DAY_OF_MONTH);//07
-	int m=c.get(c.MONTH)+1;//03
-	int y=c.get(c.YEAR);
-	String mon="";
-	String dt="";
-	String today=y+ "-" + mon + "-" +dt;
-	if (m < 10) {
-		today = y + "-0" + m + "-" + d;
-	} else if (m>=10){
-		today = y + "-" + m + "-" + d;
-	}else if(d<10) {
-		today = y + "-" + m + "-0" + d;
-	}else {
-		today = y + "-" + m + "-" + d;
+	public void insertUser(UserBean userBean) {
+		Calendar c = Calendar.getInstance();
+		int d = c.get(c.DAY_OF_MONTH);// 07
+		int m = c.get(c.MONTH) + 1;// 03
+		int y = c.get(c.YEAR);
+		String mon = "";
+		String dt = "";
+		String today = y + "-" + mon + "-" + dt;
+		if (m < 10) {
+			today = y + "-0" + m + "-" + d;
+		} else if (m >= 10) {
+			today = y + "-" + m + "-" + d;
+		} else if (d < 10) {
+			today = y + "-" + m + "-0" + d;
+		} else {
+			today = y + "-" + m + "-" + d;
+		}
+		/*
+		 * if(m<=9) { mon=0 + "" +m; } else { mon=m+ ""; } if(d<=9) { dt="0" + ""; }
+		 * else { dt=d+ ""; }
+		 */
+		// int y=c.get(c.YEAR);
+		// String today=y+ "-" + mon + "-" +dt;
+		System.out.println(today);
+		String insertQuery = "insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active,deleted) values (?,?,?,?,?,?,?,?,?,?,?)";
+		// role -> 2 for customer/buyer/user
+		stmt.update(insertQuery, userBean.getFirstName(), userBean.getLastName(), userBean.getEmail(),
+				userBean.getPassword(), 2, userBean.getGender(), userBean.getDob(), userBean.getContactNo(), today,
+				false, false); // query execute
+
 	}
-	/*
-	 * if(m<=9) { mon=0 + "" +m; } else { mon=m+ ""; } if(d<=9) { dt="0" + ""; }
-	 * else { dt=d+ ""; }
-	 */
-	//int y=c.get(c.YEAR);
-	//String today=y+ "-" + mon + "-" +dt;
-	System.out.println(today);
-	String insertQuery="insert into users (firstName,lastName,email,password,role,gender,dob,contactNo,createdAt,active,deleted) values (?,?,?,?,?,?,?,?,?,?,?)";
-	//role -> 2 for customer/buyer/user
-	stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getDob(),userBean.getContactNo(),today,false,false); //query execute
 
-}
-public UserBean authenticateUser(LoginBean loginBean) {
-	try{
-		String loginQuery = "select * from users where email=? and password=?";
-			UserBean user= stmt.queryForObject(loginQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { loginBean.getEmail(),loginBean.getPassword()});
+	public UserBean authenticateUser(LoginBean loginBean) {
+		try {
+			String loginQuery = "select * from users where email=? and password=?";
+			UserBean user = stmt.queryForObject(loginQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+					new Object[] { loginBean.getEmail(), loginBean.getPassword() });
 			return user;
-}
-			catch(Exception e) {
-				System.out.println("SMW --> UserDao::autheticateUser()");
-				System.out.println(e.getMessage());
-			}
-			return null;
-}
-
-
-public UserBean findUserByEmail(ForgetPasswordBean ForgetPasswordBean) {
-try{
-	String selectEmailQuery = "select * from users where email=?";
-		UserBean user= stmt.queryForObject(selectEmailQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { ForgetPasswordBean.getEmail()});
-		return user;
-}
-		catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("SMW --> UserDao::autheticateUser()");
 			System.out.println(e.getMessage());
 		}
 		return null;
-}
-public void updateOtp(String email,String otp) {
-	String updateOtpQuery = "update users set otp=? where email=?";
-	stmt.update(updateOtpQuery,otp,email);
-}
-public void updateMyPasword(UpdatePasswordBean upBean) {
-	String updateQuery="update users set password=?,otp=? where email=?";
-	stmt.update(updateQuery,upBean.getPassword(),"",upBean.getEmail());
-}
-public UserBean verifyOtpByEmail(UpdatePasswordBean upBean) {
-	try {
-		String otpQuery="select * from users where email=? and otp=?";
-	UserBean user=stmt.queryForObject(otpQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { upBean.getEmail(),upBean.getOtp()});
-return user;
 	}
-	catch(Exception e) {
-		System.out.println("SWM -->UserDao::verifyOtpByEmail()");
-		System.out.println(e.getMessage());
-     }
-return null;
-}
-public List<UserBean> getAllUser() {
 
-	String selectQuery = "select * from users";
-
-	List<UserBean> list =  stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
-	
-	//c1 c2 c3 
-	
-	return list;
-}
-public UserBean getUserByEmail(String email) {
-	String selectQuery="select * from users where email=?";
-	try {
-		return stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] {email});
-	}
-	catch(Exception e) {
-		System.out.println(e.getMessage());
-	}
-    return null;
-}
-public UserBean getUserById(Integer userId) {
-	UserBean userBean =null;
-	try {
-		userBean=stmt.queryForObject("select * from users where userId=?",new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { userId});
+	public UserBean findUserByEmail(ForgetPasswordBean ForgetPasswordBean) {
+		try {
+			String selectEmailQuery = "select * from users where email=?";
+			UserBean user = stmt.queryForObject(selectEmailQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+					new Object[] { ForgetPasswordBean.getEmail() });
+			return user;
+		} catch (Exception e) {
+			System.out.println("SMW --> UserDao::autheticateUser()");
+			System.out.println(e.getMessage());
 		}
-	catch(Exception e) {
-		System.out.println("UserDao :: getUserById()");
-        System.out.println(e.getMessage());
+		return null;
 	}
-	return userBean;
-}
-public void deleteUser(Integer userId,boolean currentStatus) {
-	currentStatus=!currentStatus;
-	String updateQuery="update users set deleted = ? where userId =?";
-	stmt.update(updateQuery,currentStatus,userId);
-}
-public void updateUser(UserBean userBean) {
-	String updateQuery="update users set firstName=? where userId=?";
-    stmt.update(updateQuery,userBean.getFirstName(),userBean.getUserId());
-}
-public UserBean verifyOtpByPassword(UpdatePasswordBean upBean) {
-	try {
-		String otpQuery="select * from users where password=?";
-	UserBean user=stmt.queryForObject(otpQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] { upBean.getPassword()});
-return user;
+
+	public void updateOtp(String email, String otp) {
+		String updateOtpQuery = "update users set otp=? where email=?";
+		stmt.update(updateOtpQuery, otp, email);
 	}
-	catch(Exception e) {
-		System.out.println("SWM -->UserDao::verifyOtpByPassword()");
-		System.out.println(e.getMessage());
-     }
-return null;
-}
-public List<ExpenseChartBean> getCategoryStats(){
-	String selectQ="select sum(amount) from expense where userId=? group by categoryId";
-return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));
-}
-public List<ExpenseChartBean> getVendorStats(){
-	String selectQ="select sum(amount) from expense where userId=? group by vendorId";
-return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class));
-}
+
+	public void updateMyPasword(UpdatePasswordBean upBean) {
+		String updateQuery = "update users set password=?,otp=? where email=?";
+		stmt.update(updateQuery, upBean.getPassword(), "", upBean.getEmail());
+	}
+
+	public UserBean verifyOtpByEmail(UpdatePasswordBean upBean) {
+		try {
+			String otpQuery = "select * from users where email=? and otp=?";
+			UserBean user = stmt.queryForObject(otpQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+					new Object[] { upBean.getEmail(), upBean.getOtp() });
+			return user;
+		} catch (Exception e) {
+			System.out.println("SWM -->UserDao::verifyOtpByEmail()");
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public List<UserBean> getAllUser() {
+
+		String selectQuery = "select * from users";
+
+		List<UserBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+
+		// c1 c2 c3
+
+		return list;
+	}
+
+	public UserBean getUserByEmail(String email) {
+		String selectQuery = "select * from users where email=?";
+		try {
+			return stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+					new Object[] { email });
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public UserBean getUserById(Integer userId) {
+		UserBean userBean = null;
+		try {
+			userBean = stmt.queryForObject("select * from users where userId=?",
+					new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { userId });
+		} catch (Exception e) {
+			System.out.println("UserDao :: getUserById()");
+			System.out.println(e.getMessage());
+		}
+		return userBean;
+	}
+
+	public void deleteUser(Integer userId, boolean currentStatus) {
+		currentStatus = !currentStatus;
+		String updateQuery = "update users set deleted = ? where userId =?";
+		stmt.update(updateQuery, currentStatus, userId);
+	}
+
+	public void updateUser(UserBean userBean) {
+		String updateQuery = "update users set firstName=? where userId=?";
+		stmt.update(updateQuery, userBean.getFirstName(), userBean.getUserId());
+	}
+
+	public UserBean verifyOtpByPassword(UpdatePasswordBean upBean) {
+		try {
+			String otpQuery = "select * from users where password=?";
+			UserBean user = stmt.queryForObject(otpQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+					new Object[] { upBean.getPassword() });
+			return user;
+		} catch (Exception e) {
+			System.out.println("SWM -->UserDao::verifyOtpByPassword()");
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public List<ExpenseChartBean> getCategoryStats(Integer userId) {
+		String selectQ = "select sum(amount) as amount ,categoryId as categoryId from expense  where userId=? group by categoryId order by categoryId";
+		return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class),
+				new Object[] { userId });
+	}
+
+	public List<ExpenseChartBean> getVendorStats(Integer userId) {
+		String selectQ = "select sum(amount) from expense where userId=? group by vendorId";
+		return stmt.query(selectQ, new BeanPropertyRowMapper<ExpenseChartBean>(ExpenseChartBean.class),
+				new Object[] { userId });
+	}
 }
