@@ -38,96 +38,118 @@ public class ExpenseController {
 	SubCategoryDao subcategoryDao;
 	@Autowired
 	VendorDao vendorDao;
-    @Autowired
+	@Autowired
 	AccountTypeDao accountTypeDao;
-    @Autowired
+	@Autowired
 	StatusDao statusDao;
-    @Autowired
+	@Autowired
 	ExpenseDao expenseDao;
-    
-@GetMapping("/newexpense")
-public String newExpense(Model model) { // method
+
+	@GetMapping("/newexpense")
+	public String newExpense(Model model) { // method
 //	
-	    List<UserBean> list=userDao.getAllUser();
-        List<CategoryBean> list1=categoryDao.getAllCategory();
-        List<SubCategoryBean> list2=subcategoryDao.getAllSubCategory();
-        List<VendorBean> list3=vendorDao.getAllVendor();
-        List<AccountTypeBean> list4=accountTypeDao.getAllAccountType();
-        List<StatusBean> list5=statusDao.getAllStatus();
-        model.addAttribute("list",list);
-		model.addAttribute("list1",list1);
-		model.addAttribute("list2",list2);
-		model.addAttribute("list3",list3);
-		model.addAttribute("list4",list4);
-		model.addAttribute("list5",list5);
+		List<UserBean> list = userDao.getAllUser();
+		List<CategoryBean> list1 = categoryDao.getAllCategory();
+		List<SubCategoryBean> list2 = subcategoryDao.getAllSubCategory();
+		List<VendorBean> list3 = vendorDao.getAllVendor();
+		List<AccountTypeBean> list4 = accountTypeDao.getAllAccountType();
+		List<StatusBean> list5 = statusDao.getAllStatus();
+		model.addAttribute("list", list);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list3", list3);
+		model.addAttribute("list4", list4);
+		model.addAttribute("list5", list5);
+
+		return "Expense";
+	}
+
+	@PostMapping("/saveexpense")
+	public String saveexpense(ExpenseBean expenseBean, HttpServletRequest request) {
+		System.out.println(expenseBean.getTitle());
+
+		// cookie name
+		// cookie userid
+		int userId = -1;
+		// read all cookies from request
+		String firstName = "";
+		Cookie c[] = request.getCookies();// jsEssionId userId octo firstName
+		for (Cookie x : c) {// jsessionid userId firstName
+			if (x.getName().equals("userId")) {
+				userId = Integer.parseInt(x.getValue());
+			}
+			if (x.getName().equals("firstName")) {
+				firstName = x.getValue();
+			}
+		}
+		System.out.println("userId ->" + userId);
+		System.out.println("firstName->" + firstName);
+
+		expenseBean.setUserId(userId);
+		expenseDao.addExpense(expenseBean);
+		return "redirect:/listexpense";
+	}
+
+	@GetMapping("/listexpense")
+	public String listExpense(Model model) {
+		List<ExpenseBean> listExpense = expenseDao.getAllExpense();
+		model.addAttribute("listExpense", listExpense);
+		return "ListExpense";
+
+	}
+
+	@GetMapping("/listexpenseuser")
+	public String listExpenseUser(Model model,HttpServletRequest request) {
+		Cookie c  [] = request.getCookies();
+		Integer userId = -1;
 		
-	       return "Expense";
-}
-@PostMapping("/saveexpense")
-public String saveexpense(ExpenseBean expenseBean,HttpServletRequest request) {
-	System.out.println(expenseBean.getTitle());
+		for(Cookie x:c) {
+			if(x.getName().equals("userId")) {
+				userId =  Integer.parseInt(x.getValue());
+			}
+		}
+		
+		List<ExpenseBean> listExpense = expenseDao.getAllExpenseByUser(userId);
+		model.addAttribute("listExpense", listExpense);
+		return "ListExpense";
 
-	// cookie name
-   //  cookie userid 
-   int userId=-1;
-   //read all cookies from request
-   String firstName="";
-   Cookie c[]=request.getCookies();//jsEssionId userId octo firstName 
-   for(Cookie x:c) {//jsessionid userId firstName
-	   if(x.getName().equals("userId")) {
-		   userId=Integer.parseInt(x.getValue());
-	   }
-	   if(x.getName().equals("firstName")) {
-		   firstName=x.getValue();
-		   }
-   }
-   System.out.println("userId ->"+userId);
-   System.out.println("firstName->"+firstName);
-	
-    expenseBean.setUserId(userId);
-	expenseDao.addExpense(expenseBean);
-	return "redirect:/listexpense";
-}
-@GetMapping("/listexpense")
-public String listExpense(Model model) {
-	List<ExpenseBean>listExpense=expenseDao.getAllExpense();
-	model.addAttribute("listExpense",listExpense);
-	return "ListExpense";
-	
-}
-@GetMapping("/deleteexpense/{expenseId}")
-public String deleteexpense(@PathVariable("expenseId") Integer expenseId) {
-	expenseDao.deleteExpense(expenseId);
-	return "redirect:/listexpense";
-}
-@GetMapping("/viewexpense")
-public String viewExpenseById(@RequestParam("expenseId") Integer expenseId,Model model) {
-	ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
-	model.addAttribute("expenseBean",expenseBean);
-	return "ViewExpense";
-}
-@GetMapping("/editexpense")
-public String editExpense(@RequestParam("expenseId") Integer expenseId,Model model) {
-    ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
-    model.addAttribute("expenseBean",expenseBean);
-    List<UserBean> list=userDao.getAllUser();
-    List<CategoryBean> list1=categoryDao.getAllCategory();
-    List<SubCategoryBean> list2=subcategoryDao.getAllSubCategory();
-    List<VendorBean> list3=vendorDao.getAllVendor();
-    List<AccountTypeBean> list4=accountTypeDao.getAllAccountType();
-    List<StatusBean> list5=statusDao.getAllStatus();
-    model.addAttribute("list",list);
-    model.addAttribute("list1",list1);
-	model.addAttribute("list2",list2);
-	model.addAttribute("list3",list3);
-	model.addAttribute("list4",list4);
-	model.addAttribute("list5",list5);
-    return "EditExpense";
-}
-@PostMapping("/updateexpense")
-public String updateExpense(ExpenseBean expenseBean) {
-	expenseDao.updateExpense(expenseBean);
-	return "redirect:/listexpense";
-}
-}
+	}
 
+	@GetMapping("/deleteexpense/{expenseId}")
+	public String deleteexpense(@PathVariable("expenseId") Integer expenseId) {
+		expenseDao.deleteExpense(expenseId);
+		return "redirect:/listexpense";
+	}
+
+	@GetMapping("/viewexpense")
+	public String viewExpenseById(@RequestParam("expenseId") Integer expenseId, Model model) {
+		ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+		model.addAttribute("expenseBean", expenseBean);
+		return "ViewExpense";
+	}
+
+	@GetMapping("/editexpense")
+	public String editExpense(@RequestParam("expenseId") Integer expenseId, Model model) {
+		ExpenseBean expenseBean = expenseDao.getExpenseById(expenseId);
+		model.addAttribute("expenseBean", expenseBean);
+		List<UserBean> list = userDao.getAllUser();
+		List<CategoryBean> list1 = categoryDao.getAllCategory();
+		List<SubCategoryBean> list2 = subcategoryDao.getAllSubCategory();
+		List<VendorBean> list3 = vendorDao.getAllVendor();
+		List<AccountTypeBean> list4 = accountTypeDao.getAllAccountType();
+		List<StatusBean> list5 = statusDao.getAllStatus();
+		model.addAttribute("list", list);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list3", list3);
+		model.addAttribute("list4", list4);
+		model.addAttribute("list5", list5);
+		return "EditExpense";
+	}
+
+	@PostMapping("/updateexpense")
+	public String updateExpense(ExpenseBean expenseBean) {
+		expenseDao.updateExpense(expenseBean);
+		return "redirect:/listexpense";
+	}
+}

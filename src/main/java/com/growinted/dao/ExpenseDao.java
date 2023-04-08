@@ -30,6 +30,16 @@ public List<ExpenseBean> getAllExpense() {
 	//c1 c2 c3 
 }
 
+public List<ExpenseBean> getAllExpenseByUser(Integer userId) {
+
+
+	String joinQuery = "select u.firstName,e.userId,c.categoryName,e.categoryId,sc.subCategoryName,e.subCategoryId,v.vendorName,e.vendorId,a.accountType,e.accountTypeId,s.status,e.statusId, e.expenseId,e.title,e.date,e.description,e.amount,e.deleted from users u,category c, subcategory sc,vendor v,accounttype a,status s,expense e where u.userId=e.userId and c.categoryId=e.categoryId and sc.subCategoryId=e.subCategoryId and v.vendorId=e.vendorId and a.accountTypeId=e.accountTypeId and s.statusId=e.statusId and e.deleted=false and e.userId = ?";
+
+	return stmt.query(joinQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class),new Object[] {userId});
+	
+	//c1 c2 c3 
+}
+
 public void deleteExpense(Integer expenseId) {
 	String updateQuery="update expense set deleted = true where expenseId =?";
 	stmt.update(updateQuery,expenseId);
